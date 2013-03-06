@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      <title>VitalClik Tracker</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+
+      <script>
+         var userAgent = navigator.userAgent + '';
+         if (userAgent.indexOf('iPhone') > -1) {
+           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+           var mobile_system = 'iphone';
+         } else if (userAgent.indexOf('Android') > -1) {
+           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+           var mobile_system = 'android';
+         } else {
+           var mobile_system = '';
+         }
+      </script>
+	  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+      <!-- your scripts here -->
+      <script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+      <script src="camera.js"></script>
+      <script src="js/app/app.js"></script>
+      <script src="js/app/bootstrap.js"></script>
+      <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+      
+      <style type="text/css">
+
+         .ui-header{
+         	background: #3399FF;
+            text-shadow: 0 0 0;
+         
+         }
+         #hero{
+         	background-color: #ffffff;
+         	padding: 15px;
+         	margin-bottom: 30px;
+  			border-radius: 15px;
+         	overflow: hidden;
+         	align: center;
+         }
+         #actionbar{
+         	background-color: #dd4b39;
+         	padding: 10px;
+  		 	border-radius: 15px;
+         	overflow: hidden;
+         	align: center;
+         	font-size: 5;
+         	text-shadow: 0 0 0;
+         
+         }
+         #hero h2{
+         	align:center;
+         }
+         
+         img.center {   
+         	display: block;   
+         	margin-left: auto;   
+         	margin-right: auto; }
+         
+         #welcome{
+        
+         	font-weight:bold;
+         	text-align: left;
+         	font-size:6;
+         }
+         #optionlist li{
+         	background-color: #dd4b39;
+          	padding: 15px;
+         	margin: 10px;
+  		 	border-radius: 15px;
+         	overflow: hidden;
+         }
+         
+   </style>
+   </head>
+   <body>
+      <div data-role="page">
+      
+  
+ 
+         <div data-role="header" data-position="fixed">
+            <h1><font size="2.5"> 
+             
+                     TODAY IS:
+                     <script type="text/javascript">
+                        var currentTime = new Date()
+                        var monthNames = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                                           "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC" ];
+                        var month = monthNames[(currentTime.getMonth())]
+                        var day = currentTime.getDate()
+                        var year = currentTime.getFullYear()
+                        document.write(month + "/" + day + "/" + year)
+                     </script>
+                     </font>
+            </h1>
+         </div>
+         <!-- /header -->
+         
+         <div data-role="content">
+            <div id="hero">
+               <img src="./img/logo.png" width="250px" class="center" />
+
+                  <h3 style="text-align: center;"> Welcome, Mr. John Doe </h3>
+                  <hr></hr>
+                  <a href="./index3.html" data-transition="slideup">
+                  
+				<div id="actionbar">
+				
+                  <h3>
+                  <font color="#ffffff">
+                  <script type="text/javascript">
+                  var favorites = ["Drink More Water!", "Please fill today's tracker!", "Watch fluid loss!"]
+                  var favorite = favorites[Math.floor(Math.random() * favorites.length)]
+                  var postmessage = favorite
+                  document.write(postmessage)
+                  </script>
+                  </font>
+                  </h3>
+                  </div>
+                   </a>
+                  
+                  <hr></hr>        
+
+
+                  <h3 style=> Status: <font color= "green">OK</font><img src="http://png-3.findicons.com/files/icons/719/crystal_clear_actions/256/ok.png" style="float: right; padding-right: 15px;" width="25px" >
+                  </h3>
+                 <hr></hr>
+                 <a href="#mypanel" data-transition="slideup">
+                
+                  <img src="http://cdn1.iconfinder.com/data/icons/fs-icons-ubuntu-by-franksouza-light/512/indicator-messages-new.png" style="float: left; padding-right: 15px;" width="100px" >
+                  </a>
+
+                  <b>Latest Messages (2):</b>
+                <ul style="margin-left: 95px;">
+                  <li >Post Op # Days: 10</li>
+                  <li> MD: Normal Photo </li>
+                </ul>
+
+               </div>
+
+
+               <div>
+                  <ul data-role="listview" id="optionlist">
+                     <li id="tracker">
+                        <a href="./form.html" data-transition="slideup" rel="external" data-ajax="false">
+                       
+                        <img src="./img/tracker.png" class="ui-li-thumb" style="margin-left: 20px;" />
+                           Fill your Daily Tracker 
+                        </a>
+                     </li>
+                     <li id="camera">
+                     <a href="./foo.html" data-transition="slideup" rel="external">
+                    
+                     	<img src="./img/picture.png" class="ui-li-thumb" /> Take Site Photo
+                     	</a>
+                     </li>
+                     <li id="history">
+                        <a href="./history.html" rel="external" data-ajax="false">
+                        <img src="./img/history.png" class="ui-li-thumb" />
+                           View History 
+                        </a>
+                     </li>
+
+                  </ul>
+               </div>
+            
+         </div>
+         <!-- /content -->
+
+
+  
+  <div data-role="footer">
+    <div data-role="navbar" data-position="fixed">
+    <ul>
+      <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
+      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">History</a></li>
+      <li><a href="./settings.html" data-icon="gear" rel="external" data-ajax="false">Settings</a></li>
+    </ul>
+    </div>
+  </div>
+ 
+
+      </div>
+      <!-- /page -->
+
+   </body>
+</html>
+
