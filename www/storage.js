@@ -86,15 +86,14 @@ $(document).ready(function(){
 	
 	function loadHistory(uniqueID) {
 		  // clear table and append table header row
-		  $("table#history").html("").append("<thead><tr><th>Water</th><th>Pouch</th><th>Urine</th><th>Time Submit</th></tr></thead>");
+		  $("table#history").html("").append('<thead><tr><th>Entry</th><th>Water</th><th>Pouch</th><th>Urine</th><th>Time Submit</th></tr></thead><tbody>');
 		  // for the loop, start at the beginning
-		  ID = 0;
+		  ID = uniqueID - 1;
 		  // the loop count is the same as the last unique ID;
 		  // if the last record saved had the ID of 57, then
 		  // there are 57 records to display
-		  $("table#history").append("<tbody>")
 
-		  while (ID<=uniqueID) {
+		  while (ID>=0) {
 		    ID.toString();
 		    // pull the JSON string for the current ID in the loop 
 		    // and extract data into variables
@@ -108,8 +107,8 @@ $(document).ready(function(){
 		      
 		        
 		    // render a row of data for each record
-		    $("table#history").append('<tr class="' + ID + '"><td>' + water + '</td><td>' + pouch + '</td><td>' + urine + '</td><td>'+ time + '</td></tr>');
-		    ID++;
+		    $("table#history").append('<tr><th>' + (ID +1) + '</th><td>' + water + '</td><td>' + pouch + '</td><td>' + urine + '</td><td>'+ time + '</td></tr>');
+		    ID--;
 		  } // ends loop
 		  $("table#history").append("</tbody>")
 		}

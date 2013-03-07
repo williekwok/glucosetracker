@@ -1,14 +1,11 @@
-
-
 <!DOCTYPE html> 
 <html>
    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-            <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <meta name="apple-mobile-web-app-capable" content="yes">
       
       <link rel="stylesheet" href="css/jquery.mobile.structure.css" />
       <link rel="stylesheet" href="css/jquery.mobile.theme.css" />
-      <script src="assets/js/jquery.js"></script>
       <script>
          var userAgent = navigator.userAgent + '';
          if (userAgent.indexOf('iPhone') > -1) {
@@ -22,12 +19,62 @@
          }
       </script>
       <script src="js/lib/jquery.js"></script>
+
+      <script type="text/javascript">
+
+      $(document).ready(function(){
+
+        var lastCameraID = localStorage.getItem( 'lastCameraID' );
+   
+            // if the local storage comes up empty, reset count to zero
+          function initializeCameraID() {
+          var lastID = localStorage.getItem( 'lastCameraID' );
+          if ( lastID == null ) {
+            location.reload(true);
+            localStorage.setItem( 'lastCameraID',0 );
+            }
+          }
+   
+        initializeCameraID();
+
+  
+        // before the function, create a uniqueID variable
+        var uniqueCameraID = lastCameraID;
+
+        function loadCameraHistory(uniqueCameraID){
+            ID = uniqueCameraID - 1;
+
+            while (ID>=0) {
+                 ID.toString();
+                  // pull the JSON string for the current ID in the loop 
+                  // and extract data into variables
+            var history = localStorage.getItem("cam"+ID);
+
+        //$("div#gallery").append('<img style="display:none; align:middle; width: 325px; height: 400px;" id="mySavedImage" src="'+history+'" />');
+
+                $("div#gallery").append(history);
+
+        ID--;
+
+  }
+
+}
+loadCameraHistory(uniqueCameraID);
+
+});
+
+
+
+      </script>
       <!-- your scripts here -->
-           <script src="camera.js"></script>
+      <script src="camera.js"></script>
       <script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
       <script src="js/app/app.js"></script>
       <script src="js/app/bootstrap.js"></script>
       <script src="js/lib/jquery.mobile.js"></script>
+
+      
+
  
    </head>
    <body>
@@ -38,13 +85,25 @@
          </div>
          <!-- /header -->
          <div data-role="content">   
-            <a href="#" data-role="button" data-icon="gear" data-iconpos="right" data-theme="b" onclick="capturePhoto();">Capture New</a>
+          <a href="#" data-role="button" data-icon="gear" data-iconpos="right" data-theme="b" onclick="capturePhoto();">Capture New</a>
       		<img style="display:none; align:middle; width: 325px; height: 400px;" id="myImage" src="" />
+          <div id="gallery">
+          </div>
+          <script>
+            document.write(localStorage.getItem('cam01'))
+          </script>
+
          </div>
          <!-- /content -->
-         <div data-role="footer">
-            <h4>VitalClik</h4>
-         </div>
+<div data-role="footer">
+    <div data-role="navbar" data-position="fixed">
+    <ul>
+      <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
+      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">History</a></li>
+      <li><a href="./settings.html" data-icon="gear" rel="external" data-ajax="false">Settings</a></li>
+    </ul>
+    </div>
+  </div>
          <!-- /footer -->
       </div>
       <!-- /page -->
