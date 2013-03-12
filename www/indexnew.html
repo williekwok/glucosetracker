@@ -1,0 +1,210 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>VitalClik Demo</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.css" />
+ <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+    // Wait for Cordova to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // Cordova is ready to be used!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64 encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI 
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() {
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    // 
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+    </script>
+	<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+
+
+	
+	<style type="text/css">
+	  .ui-content {
+	    background-color: #33ace0 }
+		#hero{
+			background-color: #FFFFFF;
+			padding: 15px;
+			margin-bottom: 20px;
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			overflow: hidden;
+			
+
+		}
+
+		img.center {   display: block;   margin-left: auto;   margin-right: auto; }
+
+	  </style>
+	
+</head> 
+<body onload="onDeviceReady()"> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>
+			VitalClik Patient Demo
+		</h1>
+	</div><!-- /header -->
+
+
+
+	<div data-role="content">	
+	
+		<div id="hero">
+			<img src="./img/logo.png" width="250px"  class="center">
+
+			<center><h3> Today is:
+				<script type="text/javascript">
+				var currentTime = new Date()
+				var month = currentTime.getMonth() + 1
+				var day = currentTime.getDate()
+				var year = currentTime.getFullYear()
+				document.write(month + "/" + day + "/" + year)
+			</script>
+
+
+			</h3></center>
+		<div>
+			<img src="http://www.brockmans.org/wp-content/uploads/2010/07/Asleep-Check-Mark-Icon-Sleep-Aid-Records.jpg " style= "float: left; padding-right: 15px;" width="100px" >
+			<div>Welcome Mr. John Doe</div>
+			<div>Please fill in today's information</div>
+			<div><b>Your Status is OK</b></div>
+		</div>
+		<div>
+		<ul data-role="listview" data-filter="true">
+			<li> <a href="./index2.html" data-transition="slideup"><img src="http://freegraphics.parkriver.net/1/triangle-alert-001.png" class="ui-li-thumb">Tracker <p class="ui-li-desc" style= "margin-top: 10px;"> Track your daily metrics!</p></a> </li>
+			<li> History  </li>
+			<li> Settings </li>
+			<li> About </li>
+		</ul>
+		</div>
+
+
+
+
+
+
+
+		<ul data-role="listview" data-inset="true" data-filter="true">
+			<li> Temperature
+				<form>
+				   <label for="slider-0">Please input temperature in degrees:</label>
+					<div style="background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FFE603), color-stop(1, #543B08)); margin-left: 58px; margin-right: 12px; -moz-border-radius: 15px;
+			border-radius: 15px"><br></br></div>
+				   <input type="range" name="slider" id="slider-0" value="1" min="0" max="40" data-theme="d" data-highlight="true" />
+				</form>
+								<img src="http://www.veryicon.com/icon/png/Object/Influenza/Thermometer.png" class="ui-li-thumb">
+				</li>
+			<li><a href="./index2.html" data-transition="slideup"><img src="http://freegraphics.parkriver.net/1/triangle-alert-001.png" class="ui-li-thumb">Pain</a></li>
+			<li><a href="#bar" data-transition="slideup"> <img src="http://a.dryicons.com/images/icon_sets/stickers_icon_set/png/128x128/camera.png" class="ui-li-thumb">Surgical Site Photo</a></li>
+			<li><a href="#"  data-transition="pop"> <img src="http://4.bp.blogspot.com/-1_wt08GfpTw/T6uu-38Um6I/AAAAAAAAAGc/VuxmXc7N8JQ/s1600/ekg.png" class="ui-li-thumb">How are you feeling?</a></li>
+		</ul>
+		
+		<a href="#" data-role="button" data-icon="check">Save</a>
+			
+		</div>
+
+		
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="bar">
+
+  <div data-role="header">
+    <h1>Camera</h1>
+    </div><!-- /header -->
+  <div data-role="content"> 
+
+    <button onclick="capturePhoto();">Capture Photo</button> <br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+  </div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>

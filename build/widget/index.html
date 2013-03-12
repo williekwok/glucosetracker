@@ -2,7 +2,7 @@
 <html>
    <head>
       <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no;">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <title>VitalClik Tracker</title>
@@ -21,14 +21,14 @@
            var mobile_system = '';
          }
       </script>
-	  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-      <!-- your scripts here -->
-      <script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+     
       <script src="camera.js"></script>
-      <script src="js/app/app.js"></script>
-      <script src="js/app/bootstrap.js"></script>
-      <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-      
+  <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+  <script src="js/app/app.js"></script>
+     <script src="js/app/bootstrap.js"></script>
       <style type="text/css">
 
          .ui-header{
@@ -37,17 +37,16 @@
          
          }
          #hero{
-         	background-color: #ffffff;
          	padding: 15px;
          	margin-bottom: 30px;
-  			border-radius: 15px;
+  			   border-radius: 15px;
          	overflow: hidden;
          	align: center;
          }
          #actionbar{
          	background-color: #dd4b39;
          	padding: 10px;
-  		 	border-radius: 15px;
+  		 	  border-radius: 15px;
          	overflow: hidden;
          	align: center;
          	font-size: 5;
@@ -64,55 +63,67 @@
          	margin-right: auto; }
          
          #welcome{
-        
          	font-weight:bold;
          	text-align: left;
          	font-size:6;
          }
          #optionlist li{
-         	background-color: #dd4b39;
+            background-color: white;
           	padding: 15px;
-         	margin: 10px;
-  		 	border-radius: 15px;
-         	overflow: hidden;
          }
          
+         .circular {
+          margin-left: auto;
+          margin-right: auto;
+          width: 150px;
+          height: 150px;
+          border-radius: 150px;
+          -webkit-border-radius: 150px;
+          -moz-border-radius: 150px;
+          background: url(./img/profile3.jpg) no-repeat;
+          }
+
    </style>
    </head>
    <body>
+
       <div data-role="page">
-      
-  
  
          <div data-role="header" data-position="fixed">
-            <h1><font size="2.5"> 
-             
-                     TODAY IS:
-                     <script type="text/javascript">
-                        var currentTime = new Date()
-                        var monthNames = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
-                                           "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC" ];
-                        var month = monthNames[(currentTime.getMonth())]
-                        var day = currentTime.getDate()
-                        var year = currentTime.getFullYear()
-                        document.write(month + "/" + day + "/" + year)
-                     </script>
-                     </font>
+            <h1>
+              <font size="5">        
+                VitalClik
+              </font>
             </h1>
          </div>
          <!-- /header -->
          
          <div data-role="content">
-            <div id="hero">
-               <img src="./img/logo.png" width="250px" class="center" />
+              <!-- <img src="./img/logo.png" width="250px" class="center" />-->
+              <div id="hero">
 
-                  <h3 style="text-align: center;"> Welcome, Mr. John Doe </h3>
-                  <hr></hr>
-                  <a href="./index3.html" data-transition="slideup">
-                  
-				<div id="actionbar">
+               <div class="circular"></div>
+                <h3 style="text-align: center; margin-bottom: -20px;"> Welcome, Mr. John Doe </h3>
+
+                <h4 style="text-align: center;">
+
+                    <script type="text/javascript">
+                        var currentTime = new Date()
+                        var monthNames = [ "JAN", "FEB", "March", "Apr", "May", "Jun",
+                                           "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC" ];
+                        var month = monthNames[(currentTime.getMonth())]
+                        var day = currentTime.getDate()
+                        var year = currentTime.getFullYear()
+                        document.write(month + " " + day + " " + year)
+                     </script>
+
+                     
+                    </h4>
+
+                  <a href="./form.html"  style="text-decoration: none;" data-transition="slideup" rel="external" data-ajax="false">
+				          <div id="actionbar">
 				
-                  <h3>
+                  <h3 style="text-align: center; text-decoration: none;">
                   <font color="#ffffff">
                   <script type="text/javascript">
                   var favorites = ["Drink More Water!", "Please fill today's tracker!", "Watch fluid loss!"]
@@ -125,25 +136,20 @@
                   </div>
                    </a>
                   
-                  <hr></hr>        
-
-
-                  <h3 style=> Status: <font color= "green">OK</font><img src="http://png-3.findicons.com/files/icons/719/crystal_clear_actions/256/ok.png" style="float: right; padding-right: 15px;" width="25px" >
-                  </h3>
                  <hr></hr>
-                 <a href="#mypanel" data-transition="slideup">
-                
-                  <img src="http://cdn1.iconfinder.com/data/icons/fs-icons-ubuntu-by-franksouza-light/512/indicator-messages-new.png" style="float: left; padding-right: 15px;" width="100px" >
-                  </a>
 
-                  <b>Latest Messages (2):</b>
-                <ul style="margin-left: 95px;">
-                  <li >Post Op # Days: 10</li>
-                  <li> MD: Normal Photo </li>
-                </ul>
 
-               </div>
-
+                <div class="ui-grid-b" style="background-color: white; padding: 10px;  text-align: center; border-style:solid;
+border-width:3px; border-color:gray;">
+                    <div class="ui-block-a"><font size="6"> 
+                       <b> 10 </b></font><br> DAYS POST DISCHARGE</div>
+                    <div class="ui-block-b"><font size="6" color="green"> 
+                        <b> OK </b></font><br> STATUS</div>
+                    <div class="ui-block-c"><font size="6"> 
+                       <b> 2 </b></font> <br>MESSAGES</div>
+               </div><!-- /grid-b -->
+              </div>
+            
 
                <div>
                   <ul data-role="listview" id="optionlist">
@@ -151,19 +157,20 @@
                         <a href="./form.html" data-transition="slideup" rel="external" data-ajax="false">
                        
                         <img src="./img/tracker.png" class="ui-li-thumb" style="margin-left: 20px;" />
-                           Fill your Daily Tracker 
+                          <font size="5"> Fill your <br> Daily Tracker </font>
                         </a>
                      </li>
                      <li id="camera">
-                     <a href="./foo.html" data-transition="slideup" rel="external">
-                    
-                     	<img src="./img/picture.png" class="ui-li-thumb" /> Take Site Photo
+                     <a href="./foo.html" data-transition="slideup" rel="external" data-ajax="false">
+                     	<img src="./img/picture.png" class="ui-li-thumb" /> 
+
+                      <font size="5"> Take a <br> Site Photo </font>
                      	</a>
                      </li>
                      <li id="history">
                         <a href="./history.html" rel="external" data-ajax="false">
                         <img src="./img/history.png" class="ui-li-thumb" />
-                           View History 
+                      <font size="5"> My Health </font>
                         </a>
                      </li>
 
@@ -176,11 +183,11 @@
 
   
   <div data-role="footer">
-    <div data-role="navbar" data-position="fixed">
+    <div data-role="navbar"  data-position="fixed" data-tap-toggle="false">
     <ul>
       <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
-      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">History</a></li>
-      <li><a href="./settings.html" data-icon="gear" rel="external" data-ajax="false">Settings</a></li>
+      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
+      <li><a href="./settings.html" data-icon="gear">Settings</a></li>
     </ul>
     </div>
   </div>

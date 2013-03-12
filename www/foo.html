@@ -20,58 +20,69 @@
       </script>
       <script src="js/lib/jquery.js"></script>
 
-      <script type="text/javascript">
 
-      $(document).ready(function(){
-
-        var lastCameraID = localStorage.getItem( 'lastCameraID' );
-   
-            // if the local storage comes up empty, reset count to zero
-          function initializeCameraID() {
-          var lastID = localStorage.getItem( 'lastCameraID' );
-          if ( lastID == null ) {
-            location.reload(true);
-            localStorage.setItem( 'lastCameraID',0 );
-            }
-          }
-   
-        initializeCameraID();
-
-  
-        // before the function, create a uniqueID variable
-        var uniqueCameraID = lastCameraID;
-
-        function loadCameraHistory(uniqueCameraID){
-            ID = uniqueCameraID - 1;
-
-            while (ID>=0) {
-                 ID.toString();
-                  // pull the JSON string for the current ID in the loop 
-                  // and extract data into variables
-            var history = localStorage.getItem("cam"+ID);
-
-        //$("div#gallery").append('<img style="display:none; align:middle; width: 325px; height: 400px;" id="mySavedImage" src="'+history+'" />');
-
-                $("div#gallery").append(history);
-
-        ID--;
-
-  }
-
-}
-loadCameraHistory(uniqueCameraID);
-
-});
-
-
-
-      </script>
       <!-- your scripts here -->
       <script src="camera.js"></script>
       <script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
       <script src="js/app/app.js"></script>
       <script src="js/app/bootstrap.js"></script>
       <script src="js/lib/jquery.mobile.js"></script>
+
+<script type="text/javascript">
+
+      $(document).ready(function(){
+
+   
+            // if the local storage comes up empty, reset count to zero
+        function initializeCameraID() {
+          var lastID = localStorage.getItem( 'lastCameraID' );
+          if ( lastID == null ) {
+            location.reload(true);
+            localStorage.setItem( 'lastCameraID', 0 );
+            }
+          }
+   
+        initializeCameraID();
+
+        var lastCameraID = parseInt(localStorage.getItem( 'lastCameraID' ));
+
+        console.log("cam"+lastCameraID);
+        console.log(typeof ("cam"+lastCameraID));
+
+
+
+        // before the function, create a uniqueID variable
+        var uniqueCameraID = lastCameraID;
+
+        function loadCameraHistory(uniqueID){
+            ID = uniqueID - 1;
+                    console.log(ID);
+            $("div#gallery").html("");
+
+            while (ID>=0) {
+                 ID.toString();
+                  // pull the JSON string for the current ID in the loop 
+                  // and extract data into variables
+                 var history = localStorage.getItem("cam"+ID);
+                 console.log(history);           
+                 //var img = new Image();
+                 //img.src = history;
+
+                $("div#gallery").append('<img style="display:none; align:middle; width: 325px; height: 400px;" id="'+ID+'" src="" />')
+
+                var image = document.getElementById(ID);
+                image.style.display='block';
+                image.src = history; 
+
+                console.log("testing this image");
+                $("div#gallery").append(history);
+                ID--;
+          }
+      }
+    loadCameraHistory(uniqueCameraID);
+
+});
+      </script>
 
       
 
@@ -88,15 +99,13 @@ loadCameraHistory(uniqueCameraID);
           <a href="#" data-role="button" data-icon="gear" data-iconpos="right" data-theme="b" onclick="capturePhoto();">Capture New</a>
       		<img style="display:none; align:middle; width: 325px; height: 400px;" id="myImage" src="" />
           <div id="gallery">
+
           </div>
-          <script>
-            document.write(localStorage.getItem('cam01'))
-          </script>
 
          </div>
          <!-- /content -->
 <div data-role="footer">
-    <div data-role="navbar" data-position="fixed">
+    <div data-role="navbar" data-position="fixed" data-tap-toggle="false">
     <ul>
       <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
       <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">History</a></li>

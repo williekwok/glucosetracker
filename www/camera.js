@@ -19,21 +19,25 @@ function onDeviceReady() {
       image.style.display='block';
       image.src = imageURI;
 
-      var lastCameraID = localStorage.getItem('lastCameraID');
-      var uniqueCameraID = lastCameraID;
+      console.log(imageURI);
+
+      lastCameraID = localStorage.getItem('lastCameraID');
+      uniqueCameraID = parseInt(lastCameraID);
 
 
-      var camSaveID = "cam"+uniqueCameraID.toString();
+      camSaveID = "cam"+uniqueCameraID;
+      console.log(camSaveID);
+      console.log(typeof camSaveID);
+
 
       localStorage.setItem(camSaveID, imageURI);
-      
-      loadHistory(uniqueCameraID);
+      console.log(localStorage.getItem(camSaveID));
+
       uniqueCameraID++;
 
       localStorage.removeItem( 'lastCameraID' );
       localStorage.setItem( 'lastCameraID', uniqueCameraID );
-
-
+      console.log(localStorage.getItem('lastCameraID'));
 
 
 	}
@@ -41,7 +45,13 @@ function onDeviceReady() {
 //
 function capturePhoto() {
   // Take picture using device camera and retrieve image as base64-encoded string
-  navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI, saveToPhotoAlbum: true  });
+  navigator.camera.getPicture(onSuccess, onFail, {
+    quality: 100,
+    destinationType : navigator.camera.DestinationType.FILE_URI,
+    sourceType: navigator.camera.PictureSourceType.CAMERA,
+    encodingType: navigator.camera.EncodingType.JPEG,
+    saveToPhotoAlbum: true
+  });
 }
 
 

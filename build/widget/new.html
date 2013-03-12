@@ -1,0 +1,221 @@
+<!-- dynamic collapsible -->
+
+<button type="button" data-icon="gear" data-theme="b" data-iconpos="right" data-mini="true" data-inline="true" id="add">Add</button>
+<button type="button" data-icon="plus" data-theme="b" data-iconpos="right" data-mini="true" data-inline="true" id="expand">Expand last</button>
+<button type="button" data-icon="minus" data-theme="b" data-iconpos="right" data-mini="true" data-inline="true" id="collapse">Collapse last</button>
+<div data-role="collapsible-set" data-content-theme="d" id="set">
+    <div data-role="collapsible" id="set1" data-collapsed="true">
+        <h3>Section 1</h3>
+        <p>I'm the collapsible content.</p>
+    </div>
+</div>
+
+<!-- dynamic popup -->
+<div data-role="page" id="demo-page" data-title="Cars" data-url="demo-page">
+    <div data-role="header" data-theme="b">
+        <a href="#demo-intro" data-rel="back" data-icon="arrow-l" data-iconpos="notext" data-shadow="false" data-icon-shadow="false">Back</a>
+        <h1>Cars</h1>
+    </div><!-- /header -->
+    <div data-role="content">
+        <ul data-role="listview">
+            <li><a href="#" class="cars" id="bmw"><img src="../../_assets/img/bmw-thumb.jpg" alt="BMW"><h2>BMW</h2><p>5 series</p></a></li>
+            <li><a href="#" class="cars" id="landrover"><img src="../../_assets/img/landrover-thumb.jpg" alt="Land Rover"><h2>Land Rover</h2><p>Discovery 4</p></a></li>
+            <li><a href="#" class="cars" id="tesla"><img src="../../_assets/img/tesla-thumb.jpg" alt="Tesla"><h2>Tesla</h2><p>Model S</p></a></li>
+        </ul>
+    </div><!-- /content -->
+</div>
+
+<!-- accordian -->
+<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+    <div data-role="collapsible">
+        <h3>Section 1</h3>
+        <p>I'm the collapsible content for section 1</p>
+    </div>
+    <div data-role="collapsible">
+        <h3>Section 2</h3>
+        <p>I'm the collapsible content for section 2</p>
+    </div>
+    <div data-role="collapsible">
+        <h3>Section 3</h3>
+        <p>I'm the collapsible content for section 1</p>
+    </div>
+</div>
+
+<!-- form -->
+<form>
+    <ul data-role="listview" data-inset="true">
+        <li data-role="fieldcontain">
+            <label for="name2">Text Input:</label>
+            <input type="text" name="name2" id="name2" value="" data-clear-btn="true">
+        </li>
+        <li data-role="fieldcontain">
+            <label for="textarea2">Textarea:</label>
+        <textarea cols="40" rows="8" name="textarea2" id="textarea2"></textarea>
+        </li>
+        <li data-role="fieldcontain">
+            <label for="flip2">Flip switch:</label>
+            <select name="flip2" id="flip2" data-role="slider">
+                <option value="off">Off</option>
+                <option value="on">On</option>
+            </select>
+        </li>
+        <li data-role="fieldcontain">
+            <label for="slider2">Slider:</label>
+            <input type="range" name="slider2" id="slider2" value="0" min="0" max="100" data-highlight="true">
+        </li>
+        <li data-role="fieldcontain">
+            <label for="select-choice-1" class="select">Choose shipping method:</label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="standard">Standard: 7 day</option>
+                <option value="rush">Rush: 3 days</option>
+                <option value="express">Express: next day</option>
+                <option value="overnight">Overnight</option>
+            </select>
+        </li>
+        <li class="ui-body ui-body-b">
+            <fieldset class="ui-grid-a">
+                    <div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+                    <div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div>
+            </fieldset>
+        </li>
+    </ul>
+</form>
+
+<!-- form with collaspible -->
+<div data-role="collapsible-set" data-theme="b" data-content-theme="d">
+    <div data-role="collapsible">
+        <h2>Filtered list</h2>
+        <ul data-role="listview" data-filter="true" data-filter-theme="c" data-divider-theme="d">
+            <li><a href="index.html">Adam Kinkaid</a></li>
+            <li><a href="index.html">Alex Wickerham</a></li>
+            <li><a href="index.html">Avery Johnson</a></li>
+            <li><a href="index.html">Bob Cabot</a></li>
+            <li><a href="index.html">Caleb Booth</a></li>
+        </ul>
+    </div>
+    <div data-role="collapsible">
+        <h2>Formatted text</h2>
+        <ul data-role="listview" data-theme="d" data-divider-theme="d">
+            <li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>
+            <li><a href="index.html">
+                <h3>Stephen Weber</h3>
+                <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+                <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+                <p class="ui-li-aside"><strong>6:24</strong>PM</p>
+            </a></li>
+            <li><a href="index.html">
+                <h3>jQuery Team</h3>
+                <p><strong>Boston Conference Planning</strong></p>
+                <p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+                <p class="ui-li-aside"><strong>9:18</strong>AM</p>
+            </a></li>
+        </ul>
+    </div>
+    <div data-role="collapsible">
+        <h2>Thumbnails and split button</h2>
+        <ul data-role="listview" data-split-icon="gear" data-split-theme="d">
+            <li><a href="index.html">
+                <img src="../../_assets/img/album-bb.jpg">
+                <h3>Broken Bells</h3>
+                <p>Broken Bells</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="../../_assets/img/album-hc.jpg">
+                <h3>Warning</h3>
+                <p>Hot Chip</p>
+            </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="../../_assets/img/album-p.jpg">
+                <h3>Wolfgang Amadeus Phoenix</h3>
+                <p>Phoenix</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- split buttons -->
+<ul data-role="listview" data-split-icon="gear" data-split-theme="d" data-inset="true">
+    <li><a href="#">
+        <img src="../../_assets/img/album-bb.jpg">
+        <h2>Broken Bells</h2>
+        <p>Broken Bells</p></a>
+        <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    </li>
+    <li><a href="#">
+        <img src="../../_assets/img/album-hc.jpg">
+        <h2>Warning</h2>
+        <p>Hot Chip</p></a>
+        <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    </li>
+    <li><a href="#">
+        <img src="../../_assets/img/album-p.jpg">
+        <h2>Wolfgang Amadeus Phoenix</h2>
+        <p>Phoenix</p></a>
+        <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    </li>
+</ul>
+<div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+    <h3>Purchase Album?</h3>
+    <p>Your download will begin immediately on your mobile device when you purchase.</p>
+    <a href="index.html" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Buy: $10.99</a>
+    <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+</div>
+
+<!-- Grouped collapsible with listviews -->
+
+<div data-role="collapsible-set" data-theme="b" data-content-theme="d">
+    <div data-role="collapsible">
+        <h2>Filtered list</h2>
+        <ul data-role="listview" data-filter="true" data-filter-theme="c" data-divider-theme="d">
+            <li><a href="index.html">Adam Kinkaid</a></li>
+            <li><a href="index.html">Alex Wickerham</a></li>
+            <li><a href="index.html">Avery Johnson</a></li>
+            <li><a href="index.html">Bob Cabot</a></li>
+            <li><a href="index.html">Caleb Booth</a></li>
+        </ul>
+    </div>
+    <div data-role="collapsible">
+        <h2>Formatted text</h2>
+        <ul data-role="listview" data-theme="d" data-divider-theme="d">
+            <li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>
+            <li><a href="index.html">
+                <h3>Stephen Weber</h3>
+                <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+                <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+                <p class="ui-li-aside"><strong>6:24</strong>PM</p>
+            </a></li>
+            <li><a href="index.html">
+                <h3>jQuery Team</h3>
+                <p><strong>Boston Conference Planning</strong></p>
+                <p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+                <p class="ui-li-aside"><strong>9:18</strong>AM</p>
+            </a></li>
+        </ul>
+    </div>
+    <div data-role="collapsible">
+        <h2>Thumbnails and split button</h2>
+        <ul data-role="listview" data-split-icon="gear" data-split-theme="d">
+            <li><a href="index.html">
+                <img src="../../_assets/img/album-bb.jpg">
+                <h3>Broken Bells</h3>
+                <p>Broken Bells</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="../../_assets/img/album-hc.jpg">
+                <h3>Warning</h3>
+                <p>Hot Chip</p>
+            </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+            <li><a href="index.html">
+                <img src="../../_assets/img/album-p.jpg">
+                <h3>Wolfgang Amadeus Phoenix</h3>
+                <p>Phoenix</p>
+                </a><a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+            </a></li>
+        </ul>
+    </div>
+</div>
