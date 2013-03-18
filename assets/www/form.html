@@ -1,0 +1,225 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>VitalClik Patient Demo</title> 
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+
+      <script>
+         var userAgent = navigator.userAgent + '';
+         if (userAgent.indexOf('iPhone') > -1) {
+           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+           var mobile_system = 'iphone';
+         } else if (userAgent.indexOf('Android') > -1) {
+           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+           var mobile_system = 'android';
+         } else {
+           var mobile_system = '';
+         }
+      </script>
+
+<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+<script src="camera.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/bootstrap.js"></script>
+
+	<style type="text/css">
+
+		#hero{
+			background-color: #FFFFFF;
+			padding: 15px;
+			margin-bottom: 20px;
+			overflow: hidden;	
+		}
+
+		.ui-hide-label input.ui-input-text, .ui-hide-label textarea.ui-input-text, .ui-hide-label .ui-input-search, .ui-hide-label div.ui-input-text, .ui-input-search input.ui-input-text, div.ui-input-text input.ui-input-text{
+		font-size: 1.8em;
+
+		}
+
+		     .ui-header{
+         background: #3399FF;
+                  text-shadow: 0 0 0;
+         
+         }
+
+		#optionlist li{
+        background-color: #dd4b39; 
+        padding: 15px;
+         margin: 10px;
+  		 border-radius: 15px;
+         overflow: hidden;
+         }
+         
+         #divider{
+         background-color: rgb(133, 191, 99);
+
+         padding: 10px;
+         margin-top: 10px;
+  		 border-radius: 15px;
+         overflow: hidden;
+         align: center;
+         font-size: 5;
+         text-shadow: 0 0 0;
+          
+         }
+         
+         .ui-li-heading{
+         font-size: 22px;
+         }
+         
+	  </style>
+
+<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="jquery.json-2.4.js"></script>
+<script type="text/javascript" src="storage.js"></script>
+
+
+</head> 
+
+
+<body> 
+
+<div data-role="page" data-add-back-btn="true">
+	<!-- /header -->
+         <div data-role="header" data-position="fixed">
+            <h1>
+              <font size="5">        
+               Daily Tracker
+              </font>
+            </h1>
+         </div>
+
+<div data-role="content">	
+
+
+<h1 id="feeling" style="text-align: center;">HOW ARE YOU</br>FEELING TODAY?</h1>
+	<div >
+		  <div style="margin-left:auto;
+margin-right:auto;padding-bottom:10px;"> <img src="./img/moods/angry.png" style=" padding: 8px; margin:4px; background:#fff;	border-radius: 15px;" width="80px" />
+	    <img src="./img/moods/whatever.png" style=" padding: 8px; margin:4px;background:#fff;	border-radius: 15px;" width="80px" />
+	     <img src="./img/moods/veryhappy.png" style="padding: 8px; margin:4px; background:#fff;	border-radius: 15px;" width="80px" />
+		 </div>
+		 </div>
+
+
+		 <div>
+                  <ul data-role="listview" id="optionlist">
+                     
+                  <li id="camera">
+                     <a href="./foo.html" data-transition="slideup" rel="external" data-ajax="false">
+                     	<img src="http://a.dryicons.com/images/icon_sets/stickers_icon_set/png/128x128/camera.png" class="ui-li-thumb" />Surgical Site Picture</a></li>
+                  </ul>
+         
+            
+         </div>
+    <br> 
+    <hr>   
+
+ <div id="divider">
+    <h1><font color="#ffffff">
+	Fluid Balance
+    </font></h1>
+ </div>  
+      
+
+<form name="save" id="save" action="">
+  
+  <h2> Cups of Water</h2><input type="number" name="water" id="water" placeholder="0">
+  <h2> Number of Pouch Changes</h2><input type="number" name="pouch" id="pouch" placeholder="0">
+  <h2>Number of Times Urinated</h2><input type="number" name="urine" id="urine" placeholder="0">
+  <hr>
+   <div id="divider">
+                  <h1>
+                  <font color="#ffffff">
+					Abdominal Health
+                  </font>
+                  </h1>
+                  </div>         
+
+	  <ul data-role="listview" data-inset="true" data-divider-theme="d">
+				<li data-role="fieldcontain">
+					<h1>No Passing of Stool (24Hrs)</h1>
+					<select name="flip2" id="flip2" data-role="slider">
+						<option value="no">No</option>
+						<option value="yes">Yes</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain">
+					<h1>No Passing of Gas (24Hrs)</h1>
+					<select name="flip2" id="flip2" data-role="slider">
+						<option value="no">No</option>
+						<option value="yes">Yes</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain">
+					<h1>Abdominal Pain</h1>
+					<select name="flip2" id="flip2" data-role="slider">
+						<option value="no">No</option>
+						<option value="yes">Yes</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain">
+					<h1>Abdominal Swelling</h1>
+					<select name="flip2" id="flip2" data-role="slider">
+						<option value="no">No</option>
+						<option value="yes">Yes</option>
+					</select>
+				</li>			
+			</ul>
+
+	  <hr>
+   <div id="divider">
+                  <h1>
+                  <font color="#ffffff">
+					Wound Care
+                  </font>
+                  </h1>
+                  </div>       
+                  	  <ul data-role="listview" data-inset="true" data-divider-theme="d">
+                    
+					<li data-role="fieldcontain">
+					<h1>Wound Open</h1>
+					<select name="flip2" id="flip2" data-role="slider">
+						<option value="no">No</option>
+						<option value="yes">Yes</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain">
+					<h1>Wound Pain/Swelling/Redness</h1>
+					<select name="flip2" id="flip2" data-role="slider">
+						<option value="no">No</option>
+						<option value="yes">Yes</option>
+					</select>
+				</li>	
+				</ul>	
+
+
+ <input type="submit" value="Save" id="savebutton" onclick="alert('Success! Measurements Saved To History'); location.href ='./history.html';">
+</form>
+
+
+
+</div>
+<!-- /content -->
+
+ <div data-role="footer">
+    <div data-role="navbar" data-position="fixed" data-tap-toggle="false">
+    <ul>
+      <li><a href="./index.html" data-icon="plus" rel="external" data-ajax="false">Home</a></li>
+      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
+      <li><a href="./settings.html" data-icon="gear" rel="external" data-ajax="false">Settings</a></li>
+    </ul>
+    </div>
+  </div>
+  
+</div>
+<!-- /page -->
+
+</body>
+</html>

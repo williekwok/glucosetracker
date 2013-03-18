@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html>
+<title>VitalClik Patient Demo</title>  
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+<link rel="stylesheet" href="jquery.jqplot.min.css" />
+
+<!-- Custome Styles -->
+<style type="text/css">
+
+		.ui-table-reflow.ui-responsive td, .ui-table-reflow.ui-responsive th, .ui-table-reflow.ui-responsive tbody th, .ui-table-reflow.ui-responsive tbody td, .ui-table-reflow.ui-responsive thead td, .ui-table-reflow.ui-responsive thead th{
+				width: 500px;
+		}
+
+		.jqplot-target{
+				padding-right: 50px;
+		}
+
+         .ui-header{
+         	background: #3399FF;
+            text-shadow: 0 0 0;
+         
+         }
+</style>
+
+<!-- Javascript for grabbing the right cordova/phonegap library (Android or iOS) -->
+
+<script>
+         
+         var userAgent = navigator.userAgent + '';
+         if (userAgent.indexOf('iPhone') > -1) {
+           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+           var mobile_system = 'iphone';
+         } else if (userAgent.indexOf('Android') > -1) {
+           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+           var mobile_system = 'android';
+         } else {
+           var mobile_system = '';
+         }
+</script>
+
+<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+<script src="camera.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/bootstrap.js"></script>
+
+<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="jquery.json-2.4.js"></script>
+<script  type="text/javascript" src="jquery.jqplot.min.js"></script>
+
+<!-- Script to get saved form data from local storage -->
+  
+<script type="text/javascript">
+
+      $(document).ready(function(){
+
+   
+            // if the local storage comes up empty, reset count to zero
+        function initializeCameraID() {
+          var lastID = localStorage.getItem( 'lastCameraID' );
+          if ( lastID == null ) {
+            location.reload(true);
+            localStorage.setItem( 'lastCameraID', 0 );
+            }
+          }
+   
+        initializeCameraID();
+
+        var lastCameraID = parseInt(localStorage.getItem( 'lastCameraID' ));
+
+        console.log("cam"+lastCameraID);
+        console.log(typeof ("cam"+lastCameraID));
+
+
+
+        // before the function, create a uniqueID variable
+        var uniqueCameraID = lastCameraID;
+
+        function loadCameraHistory(uniqueID){
+            ID = uniqueID - 1;
+            $("div#gallery").html("");
+
+           	if (ID>=0){
+            while (ID>=0) {
+                 ID.toString();
+                  // pull the JSON string for the current ID in the loop 
+                  // and extract data into variables
+                 var history = localStorage.getItem("cam"+ID);
+                 console.log(history);           
+                 //var img = new Image();
+                 //img.src = history;
+
+                $("div#gallery").append('<img style="display:none; align:middle; width: 325px; height: 400px;" id="'+ID+'" src="" />')
+
+                var image = document.getElementById(ID);
+                image.style.display='block';
+                image.src = history; 
+
+                console.log("testing this image");
+                $("div#gallery").append(history);
+                ID--;
+          }
+      }
+      else {
+      	 $("div#gallery").append('There are no Photos to display');
+
+      }
+      }
+    loadCameraHistory(uniqueCameraID);
+
+});
+      </script>
+	
+</head> 
+
+
+<body> 
+
+<div data-role="page" data-add-back-btn="true">
+
+	<!-- /header -->
+         <div data-role="header" data-position="fixed">
+            <h1>
+              <font size="5">        
+                My Health
+              </font>
+            </h1>
+         </div>
+
+        <div data-role="navbar">
+    		<ul >
+        		<li><a href="./history.html" rel="external" data-ajax="false"><font size="4px">Data Log</font></a></li>
+        		<li><a href="#"  class="ui-btn-active" ><font size="4px">Photos</font></a></li>
+    		</ul>
+		</div><!-- /navbar -->
+	
+
+<div data-role="content">	
+
+<h1> Photos </h1>
+
+          <div id="gallery">
+
+          </div>
+
+
+<!-- /content -->
+</div>
+
+ <div data-role="footer">
+    <div data-role="navbar" data-position="fixed" data-tap-toggle="false">
+    <ul>
+      <li><a href="./index.html" data-icon="plus" rel="external" data-ajax="false">Home</a></li>
+      <li><a href="./form.html" data-icon="add" rel="external" data-ajax="false">Tracker</a></li>
+      <li><a href="./settings.html" data-icon="gear" >Settings</a></li>
+    </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
