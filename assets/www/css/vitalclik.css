@@ -1,0 +1,84 @@
+/*
+  Vitalclik CSS
+*/ 
+
+  a {
+    text-decoration: none;
+  }
+
+
+  /* =============================================================================
+                     Home Page 
+     ========================================================================== */
+  
+  .notify {
+    background-color: #DD4B38;
+    border-radius: 15px;
+    margin: 0 auto;
+    font-size:20px;
+    text-align: center;
+    color:white !important;
+    text-shadow:none;
+    display: block;
+    width: 100%;
+    padding:20px 0;    
+  }
+
+
+ .ui-header{
+  background: #3399FF;
+    text-shadow: 0 0 0;
+ }
+
+ .hero{
+  padding: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin:0 auto 20px auto;
+ }
+
+  .hero h3, .hero h4 {
+    text-align: center;
+  }
+
+
+ #actionbar{
+  background-color: #dd4b39;
+  padding: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin:0 auto;
+  font-size: 5;
+  text-shadow: 0 0 0;
+ }
+
+ #hero h2{
+  text-align: center;
+ }
+ 
+ img.center {   
+  display: block;   
+  margin-left: auto;   
+  margin-right: auto;
+}
+ 
+#welcome{
+  font-weight:bold;
+  text-align: left;
+  font-size:6;
+}
+
+#optionlist li{
+  background-color: white;
+  padding: 15px;
+}
+ 
+.circular {
+  margin:0 auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(../img/profile3.jpg) no-repeat;
+}
