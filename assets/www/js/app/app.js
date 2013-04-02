@@ -15,11 +15,15 @@ var app = window.app = {
         month = monthNames[(currentTime.getMonth())],
         day = currentTime.getDate(),
         year = currentTime.getFullYear();
-    $('h4.date').text(month + " " + day + " " + year);
+    $('.date').text(month + " " + day + " " + year);
   },
   setNotify : function() {
     var favorites = ["Drink More Water!", "Please fill today's tracker!", "Watch fluid loss!"];
-    $('.fn-notify').text(favorites[Math.floor(Math.random() * favorites.length)]);
+    $('.fn-notify').each(function(i,el){
+      var idx = Math.floor(Math.random() * favorites.length);
+      $(el).text(favorites[idx]);
+      favorites.splice(idx,1);
+    });
   }
 };
 
