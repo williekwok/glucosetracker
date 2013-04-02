@@ -25,6 +25,13 @@ module.exports = function (grunt) {
         ]
       }
     },
+    less: {
+      development: {
+        files: {
+          "css/wat.css": "css/vitalclik.less"
+        }
+      }
+    },
     cssmin: {
       compress: {
         files: {
@@ -38,7 +45,7 @@ module.exports = function (grunt) {
         tasks: ['stylus', 'concat', 'copy', 'cssmin']
       },
       css: {
-        files: ['src/css/global.css'],
+        files: ['src/css/global.css','src/css/vitalclik.less'],
         tasks: ['concat', 'copy', 'cssmin']
       }
     }
@@ -49,6 +56,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   grunt.registerTask('default', ['stylus', 'concat', 'copy', 'cssmin']);
 };
