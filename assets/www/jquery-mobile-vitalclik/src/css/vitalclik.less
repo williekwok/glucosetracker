@@ -5,7 +5,8 @@
 
 @blue : #3399FF;
 @darkblue: #2b8beb;
-
+@green  : #47c689;
+@red : #B11E1E;
 
   .clearfix:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; } .clearfix {display: inline-block; } html[xmlns] .clearfix {display: block; } * html .clearfix {height: 1%; }
 
@@ -17,6 +18,10 @@
     a {
       text-decoration: none;
     }
+  }
+
+  .ui-bar-a {
+    border:0;
   }
   
   [data-role="page"] {
@@ -116,6 +121,32 @@
     }
   }
 
+  .ui-grid-solo.notice {
+    
+    text-shadow:1px 1px 0 darken(@green,10%);
+    color:white;
+    padding:10px 20px;
+    text-align: left;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    img {
+      float:left;
+      margin-right: 20px;
+    }
+    &.okay {
+      background:@green;
+    }
+    &.not-okay {
+      background:@red;
+      text-shadow:1px 1px 0 darken(@red,10%);
+      img {
+        position: relative;
+        -webkit-transform:rotate(180deg);
+        -moz-transform:rotate(180deg);
+        transform:rotate(180deg);
+      }
+    }
+  }
+
   .homeScreen {
     background:white;
     border:1px solid #e2e2e2;
@@ -131,6 +162,19 @@
         color:white;
         margin:0;
         padding:5px 0;
+      }
+    }
+    .ui-block-a,.ui-block-b {
+      text-align: center;
+    }
+    .ui-block {
+      border-bottom:1px solid #e2e2e2;
+      padding:10px 0;
+      &.ui-block-bottom {
+        border-bottom: 0;
+      }
+      img {
+        height:100px;
       }
     }
   }
@@ -206,4 +250,17 @@
   -webkit-border-radius: 150px;
   -moz-border-radius: 150px;
   background: url(../img/profile3.jpg) no-repeat;
+}
+
+
+
+/* 
+  Media Queries
+*/ 
+
+@media and (max-width : 420px) {
+  .ui-block {
+    width:100% !important;
+    background:red;
+  }
 }

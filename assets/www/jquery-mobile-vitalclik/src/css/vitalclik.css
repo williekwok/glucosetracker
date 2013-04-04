@@ -24,6 +24,9 @@ body {
 body a {
   text-decoration: none;
 }
+.ui-bar-a {
+  border: 0;
+}
 [data-role="page"] {
   background: red;
   background: #f8f8f8;
@@ -114,6 +117,32 @@ body a {
 .ui-block.last {
   border-right: 0;
 }
+.ui-grid-solo.notice {
+  text-shadow: 1px 1px 0 #34a66f;
+  color: white;
+  padding: 10px 20px;
+  text-align: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ui-grid-solo.notice img {
+  float: left;
+  margin-right: 20px;
+}
+.ui-grid-solo.notice.okay {
+  background: #47c689;
+}
+.ui-grid-solo.notice.not-okay {
+  background: #b11e1e;
+  text-shadow: 1px 1px 0 #851717;
+}
+.ui-grid-solo.notice.not-okay img {
+  position: relative;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
 .homeScreen {
   background: white;
   border: 1px solid #e2e2e2;
@@ -131,6 +160,20 @@ body a {
   color: white;
   margin: 0;
   padding: 5px 0;
+}
+.homeScreen .ui-block-a,
+.homeScreen .ui-block-b {
+  text-align: center;
+}
+.homeScreen .ui-block {
+  border-bottom: 1px solid #e2e2e2;
+  padding: 10px 0;
+}
+.homeScreen .ui-block.ui-block-bottom {
+  border-bottom: 0;
+}
+.homeScreen .ui-block img {
+  height: 100px;
 }
 .svg-icon {
   width: 30px;
@@ -188,4 +231,12 @@ img.center {
   -webkit-border-radius: 150px;
   -moz-border-radius: 150px;
   background: url(../img/profile3.jpg) no-repeat;
+}
+/* 
+  Media Queries
+*/@media and (max-width: 420px) {
+  .ui-block {
+    width: 100% !important;
+    background: red;
+  }
 }

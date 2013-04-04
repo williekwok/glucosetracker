@@ -4,21 +4,24 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <meta name="apple-mobile-web-app-capable" content="yes">
       
-      <link rel="stylesheet" href="css/jquery.mobile.structure.css" />
-      <link rel="stylesheet" href="css/jquery.mobile.theme.css" />
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/generated/jquery.mobile.flatui.min.css">
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/src/css/vitalclik.css" type="text/css">
       
-      <script>
-         var userAgent = navigator.userAgent + '';
-         if (userAgent.indexOf('iPhone') > -1) {
-           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
-           var mobile_system = 'iphone';
-         } else if (userAgent.indexOf('Android') > -1) {
-           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
-           var mobile_system = 'android';
-         } else {
-           var mobile_system = '';
-         }
+      <script type="text/javascript">
+        var mobile_system = '';
+
+        if (!!navigator.userAgent.match(/iphone/gi)) {
+          // document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-iphone.js">\x3C/script>');
+          mobile_system = 'iphone';
+        } else if (!!navigator.userAgent.match(/android/gi)) {
+          // document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-android.js">\x3C/script>');
+          mobile_system = 'android';
+        }
       </script>
+
       <script src="js/lib/jquery.js"></script>
 
 

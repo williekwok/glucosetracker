@@ -47,8 +47,8 @@
          <div data-role="content">
               
               <div class="hero">
-                <div class="ui-grid-b">
-                    <div class="ui-grid-solo">
+                <div class="ui-grid-a">
+                    <!-- <div class="ui-grid-solo">
                       <img src="img/alert.svg" class="svg-icon">
                       <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
                     </div>
@@ -56,13 +56,17 @@
                       <img src="img/alert.svg" class="svg-icon">
                       
                       <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
+                    </div> -->
+
+                    <!-- Change to not-okay for opposite -->
+                    <div class="ui-grid-solo notice okay">
+                      <img src="img/thumbs.svg">
+                      <p>Thank you for completing today's tracker. There have been no identified concerns.</p>
+                      <p>However, if you have any concerns we did not ask about, please call the Nurse Telephone Services at 416—123—4567</p>
                     </div>
 
                     <div class="ui-block-a ui-block">
                       <span class="number">10 </span>DAYS POST DISCHARGE
-                    </div>
-                    <div class="ui-block-b ui-block">
-                      <span class="number good">OK</span>STATUS
                     </div>
                     <div class="ui-block-c ui-block last">
                        <span class="number">2 </span>MESSAGES
@@ -74,30 +78,30 @@
                 <div class="ui-block-solo chooser">
                   <p>What would you like to do?</p>
                 </div>
-                <div class="ui-block-a">
-                  <a href="foo.html">
-                    <img src="img/alert.svg" alt="" class="homeIcon">
+                <div class="ui-block-a ui-block">
+                  <a href="./form.html">
+                    <img src="img/clipboard.svg" alt="" class="homeIcon">
                     <p>Fill your Daily Tracker</p>
                   </a>
 
                 </div>
-                <div class="ui-block-b">
-                  <a href="foo.html">
-                    <img src="img/alert.svg" alt="" class="homeIcon">
+                <div class="ui-block-b ui-block">
+                  <a href="./form.html">
+                    <img src="img/camera.svg" alt="" class="homeIcon">
                     <p>Take a Site photo</p>
                   </a>
 
                 </div>
-                <div class="ui-block-a">
-                  <a href="foo.html">
-                    <img src="img/alert.svg" alt="" class="homeIcon">
+                <div class="ui-block-a ui-block ui-block-bottom">
+                  <a href="./form.html">
+                    <img src="img/heart.svg" alt="" class="homeIcon">
                     <p>My Health</p>
                   </a>
 
                 </div>
-                <div class="ui-block-b">
-                  <a href="foo.html">
-                    <img src="img/alert.svg" alt="" class="homeIcon">
+                <div class="ui-block-b ui-block ui-block-bottom">
+                  <a href="./form.html">
+                    <img src="img/cogs.svg" alt="" class="homeIcon">
                     <p>Settings</p>
                   </a>
 
@@ -106,7 +110,7 @@
             
 
                <div>
-                  <ul data-role="listview" id="optionlist" class="ui-listview-inset">
+                  <ul data-role="listview" id="optionlist" class="ui-listview-inset" style="display:none">
                      <li id="tracker">
                         <a href="./form.html" data-transition="slideup" rel="external" data-ajax="false">
                        
