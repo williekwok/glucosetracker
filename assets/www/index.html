@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      
+      <title>VitalClik Tracker</title>
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/generated/jquery.mobile.flatui.min.css">
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/src/css/vitalclik.css" type="text/css">
+
+      <script type="text/javascript">
+        var mobile_system = '';
+
+        if (!!navigator.userAgent.match(/iphone/gi)) {
+          // document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-iphone.js">\x3C/script>');
+          mobile_system = 'iphone';
+        } else if (!!navigator.userAgent.match(/android/gi)) {
+          // document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-android.js">\x3C/script>');
+          mobile_system = 'android';
+        }
+      </script>
+
+      <script src="cordova-2.4.0.js"></script>
+      <script src="camera.js"></script>
+      <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+      <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+      <script src="js/app/app.js"></script>
+      <script src="js/app/bootstrap.js"></script>
+    </head>
+    <body>
+      <div data-role="page">
+
+         <div data-role="header" data-position="fixed" class="header">
+            <h1>VitalClik <span class="date"></span></h1>
+            
+            <div class="profile">
+              <img src="img/profile3.jpg">
+              <span> Welcome, Mr. John Doe </span>
+            </div>
+         </div>
+
+         <div data-role="content">
+              
+              <div class="hero">
+                <div class="ui-grid-a">
+                    <!-- <div class="ui-grid-solo">
+                      <img src="img/alert.svg" class="svg-icon">
+                      <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
+                    </div>
+                    <div class="ui-grid-solo">
+                      <img src="img/alert.svg" class="svg-icon">
+                      
+                      <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
+                    </div> -->
+
+                    <!-- Change to not-okay for opposite -->
+                    <div class="ui-grid-solo notice okay">
+                      <img src="img/thumbs.svg">
+                      <p>Thank you for completing today's tracker. There have been no identified concerns.</p>
+                      <p>However, if you have any concerns we did not ask about, please call the Nurse Telephone Services at 416—123—4567</p>
+                    </div>
+
+                    <div class="ui-block-a ui-block">
+                      <span class="number">10 </span>DAYS POST DISCHARGE
+                    </div>
+                    <div class="ui-block-c ui-block last">
+                       <span class="number">2 </span>MESSAGES
+                    </div>
+               </div><!-- /grid-b -->
+              </div>
+
+              <div class="homeScreen ui-grid-a">
+                <div class="ui-block-solo chooser">
+                  <p>What would you like to do?</p>
+                </div>
+                <div class="ui-block-a ui-block">
+                  <a href="./form.html">
+                    <img src="img/clipboard.svg" alt="" class="homeIcon">
+                    <p>Fill your Daily Tracker</p>
+                  </a>
+
+                </div>
+                <div class="ui-block-b ui-block">
+                  <a href="./form.html">
+                    <img src="img/camera.svg" alt="" class="homeIcon">
+                    <p>Take a Site photo</p>
+                  </a>
+
+                </div>
+                <div class="ui-block-a ui-block ui-block-bottom">
+                  <a href="./form.html">
+                    <img src="img/heart.svg" alt="" class="homeIcon">
+                    <p>My Health</p>
+                  </a>
+
+                </div>
+                <div class="ui-block-b ui-block ui-block-bottom">
+                  <a href="./form.html">
+                    <img src="img/cogs.svg" alt="" class="homeIcon">
+                    <p>Settings</p>
+                  </a>
+
+                </div>
+              </div>
+            
+
+               <div>
+                  <ul data-role="listview" id="optionlist" class="ui-listview-inset" style="display:none">
+                     <li id="tracker">
+                        <a href="./form.html" data-transition="slideup" rel="external" data-ajax="false">
+                       
+                        <img src="./img/tracker.png" class="ui-li-thumb" style="margin-left: 20px;" />
+                          <font size="5"> Fill your <br> Daily Tracker </font>
+                        </a>
+                     </li>
+                     <li id="camera">
+                     <a href="./foo.html" data-transition="slideup" rel="external" data-ajax="false">
+                      <img src="./img/picture.png" class="ui-li-thumb" /> 
+
+                      <font size="5"> Take a <br> Site Photo </font>
+                      </a>
+                     </li>
+                     <li id="history">
+                        <a href="./history.html" rel="external" data-ajax="false">
+                        <img src="./img/history.png" class="ui-li-thumb" />
+                      <font size="5"> My Health </font>
+                        </a>
+                     </li>
+
+                  </ul>
+               </div>
+         </div>
+         <!-- /content -->
+
+
+
+         <div data-role="footer">
+           <div data-role="navbar"  data-position="fixed" data-tap-toggle="false">
+             <ul>
+               <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
+               <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
+               <li><a href="./settings.html" data-icon="gear">Settings</a></li>
+             </ul>
+           </div>
+         </div>
+
+        </div>
+        <!-- /page -->
+
+        </body>
+        </html>
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
