@@ -1,201 +1,157 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      
       <title>VitalClik Tracker</title>
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/generated/jquery.mobile.flatui.min.css">
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/src/css/vitalclik.css" type="text/css">
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+      <script type="text/javascript">
+        var mobile_system = '';
 
-      <script>
-         var userAgent = navigator.userAgent + '';
-         if (userAgent.indexOf('iPhone') > -1) {
-           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
-           var mobile_system = 'iphone';
-         } else if (userAgent.indexOf('Android') > -1) {
-           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
-           var mobile_system = 'android';
-         } else {
-           var mobile_system = '';
-         }
+        if (!!navigator.userAgent.match(/iphone/gi)) {
+          // document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-iphone.js">\x3C/script>');
+          mobile_system = 'iphone';
+        } else if (!!navigator.userAgent.match(/android/gi)) {
+          // document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-android.js">\x3C/script>');
+          mobile_system = 'android';
+        }
       </script>
 
-        <script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
-     
+      <script src="cordova-2.4.0.js"></script>
       <script src="camera.js"></script>
-  <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
-  <script src="js/app/app.js"></script>
-     <script src="js/app/bootstrap.js"></script>
-      <style type="text/css">
+      <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+      <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+      <script src="js/app/app.js"></script>
+      <script src="js/app/bootstrap.js"></script>
+        <script src="http://www.parsecdn.com/js/parse-1.2.2.min.js"></script>
 
-         .ui-header{
-         	background: #3399FF;
-            text-shadow: 0 0 0;
-         
-         }
-         #hero{
-         	padding: 15px;
-         	margin-bottom: 30px;
-  			   border-radius: 15px;
-         	overflow: hidden;
-         	align: center;
-         }
-         #actionbar{
-         	background-color: #dd4b39;
-         	padding: 10px;
-  		 	  border-radius: 15px;
-         	overflow: hidden;
-         	align: center;
-         	font-size: 5;
-         	text-shadow: 0 0 0;
-         
-         }
-         #hero h2{
-         	align:center;
-         }
-         
-         img.center {   
-         	display: block;   
-         	margin-left: auto;   
-         	margin-right: auto; }
-         
-         #welcome{
-         	font-weight:bold;
-         	text-align: left;
-         	font-size:6;
-         }
-         #optionlist li{
-            background-color: white;
-          	padding: 15px;
-         }
-         
-         .circular {
-          margin-left: auto;
-          margin-right: auto;
-          width: 150px;
-          height: 150px;
-          border-radius: 150px;
-          -webkit-border-radius: 150px;
-          -moz-border-radius: 150px;
-          background: url(./img/profile3.jpg) no-repeat;
-          }
 
-   </style>
-   </head>
-   <body>
+      <script>
+        Parse.initialize("EknvtH4nQxYSI3a7eJOUr62KYnHp4mIJSonI5v1B", "U4zPMfFKTmfMQPVz91eMDqcaZv2uAP2S6v1pAwKM");
+        //if (Parse.User.current()) {
+        //} else {
+         // window.location.href = "./login.html";
+        //}
 
+      </script>
+
+    </head>
+    <body>
       <div data-role="page">
- 
-         <div data-role="header" data-position="fixed">
-            <h1>
-              <font size="5">        
-                VitalClik
-              </font>
-            </h1>
+
+         <div data-role="header" data-position="fixed" class="header">
+            <h1>VitalClik <span class="date"></span></h1>
+            
+            <div class="profile">
+              <img src="img/profile3.jpg">
+              <span> Welcome, <script type="text/javascript">
+          currentUser = Parse.User.current();
+          var name = currentUser.getUsername();
+          document.write(name);
+                     </script>  </span>
+            </div>
          </div>
-         <!-- /header -->
-         
+
          <div data-role="content">
-              <!-- <img src="./img/logo.png" width="250px" class="center" />-->
-              <div id="hero">
+              
+              <div class="hero">
+                <div class="ui-grid-a">
+                    <!-- <div class="ui-grid-solo">
+                      <img src="img/alert.svg" class="svg-icon">
+                      <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
+                    </div>
+                    <div class="ui-grid-solo">
+                      <img src="img/alert.svg" class="svg-icon">
+                      
+                      <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
+                    </div> -->
 
-               <div class="circular"></div>
-                <h3 style="text-align: center; margin-bottom: -20px;"> Welcome, Mr. John Doe </h3>
+                    <!-- Change to not-okay for opposite -->
+                    <div class="ui-grid-solo notice okay">
+                      <img src="img/thumbs.svg">
+                      <p>Thank you for completing today's tracker. There have been no identified concerns.</p>
+                      <p>However, if you have any concerns we did not ask about, please call the Nurse Telephone Services at 416—123—4567</p>
+                    </div>
 
-                <h4 style="text-align: center;">
-
-                    <script type="text/javascript">
-                        var currentTime = new Date()
-                        var monthNames = [ "JAN", "FEB", "March", "Apr", "May", "Jun",
-                                           "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC" ];
-                        var month = monthNames[(currentTime.getMonth())]
-                        var day = currentTime.getDate()
-                        var year = currentTime.getFullYear()
-                        document.write(month + " " + day + " " + year)
-                     </script>
-
-                     
-                    </h4>
-
-                  <a href="./form.html"  style="text-decoration: none;" data-transition="slideup" rel="external" data-ajax="false">
-				          <div id="actionbar">
-				
-                  <h3 style="text-align: center; text-decoration: none;">
-                  <font color="#ffffff">
-                  <script type="text/javascript">
-                  var favorites = ["Drink More Water!", "Please fill today's tracker!", "Watch fluid loss!"]
-                  var favorite = favorites[Math.floor(Math.random() * favorites.length)]
-                  var postmessage = favorite
-                  document.write(postmessage)
-                  </script>
-                  </font>
-                  </h3>
-                  </div>
-                   </a>
-                  
-                 <hr></hr>
-
-
-                <div class="ui-grid-b" style="background-color: white; padding: 10px;  text-align: center; border-style:solid;
-border-width:3px; border-color:gray;">
-                    <div class="ui-block-a"><font size="6"> 
-                       <b> 10 </b></font><br> DAYS POST DISCHARGE</div>
-                    <div class="ui-block-b"><font size="6" color="green"> 
-                        <b> OK </b></font><br> STATUS</div>
-                    <div class="ui-block-c"><font size="6"> 
-                       <b> 2 </b></font> <br>MESSAGES</div>
+                    <div class="ui-block-a ui-block">
+                      <span class="number">10 </span>DAYS POST DISCHARGE
+                    </div>
+                    <div class="ui-block-c ui-block last" >
+                       <a href="./message.html" rel="external" data-ajax="false" style="color: #39f">
+                       <span class="number">2 </span></a>MESSAGES
+                    </div>
                </div><!-- /grid-b -->
+              </div>
+
+              <div class="homeScreen ui-grid-a">
+                <div class="ui-block-solo chooser">
+                  <p style="font-size: 20px">What would you like to do?</p>
+                </div>
+                <div class="ui-block-a ui-block">
+                  <a href="./form.html" rel="external" data-ajax="false">
+                    <img src="img/clipboard.svg" alt="" class="homeIcon">
+                    <p style="font-size: 20px"> Complete your Daily Tracker (Single)</p>
+                  </a>
+
+                </div>
+                <div class="ui-block-b ui-block">
+                  <a href="./form4.html" rel="external" data-ajax="false">
+                     <img src="img/clipboard.svg" alt="" class="homeIcon">
+                    <p style="font-size: 20px">Complete your Daily Tracker (Multi)</p>
+                  </a>
+
+                </div>
+                <div class="ui-block-a ui-block ui-block-bottom">
+                  <a href="./history.html" rel="external" data-ajax="false">
+					<img src="img/heart.svg" alt="" class="homeIcon">
+                    <p style="font-size: 20px">My Health</p>
+                  </a>
+
+                </div>
+                <div class="ui-block-b ui-block ui-block-bottom">
+                  <a href="./settings.html" rel="external" data-ajax="false">
+                    <img src="img/cogs.svg" alt="" class="homeIcon">
+                    <p style="font-size: 20px">Settings</p>
+                  </a>
+
+                </div>
               </div>
             
 
-               <div>
-                  <ul data-role="listview" id="optionlist">
-                     <li id="tracker">
-                        <a href="./form.html" data-transition="slideup" rel="external" data-ajax="false">
-                       
-                        <img src="./img/tracker.png" class="ui-li-thumb" style="margin-left: 20px;" />
-                          <font size="5"> Fill your <br> Daily Tracker </font>
-                        </a>
-                     </li>
-                     <li id="camera">
-                     <a href="./foo.html" data-transition="slideup" rel="external" data-ajax="false">
-                     	<img src="./img/picture.png" class="ui-li-thumb" /> 
+			   <br>
+			   		<img src="http://upload.wikimedia.org/wikipedia/en/4/4b/Sunnybrook_logo.png" style="display: block;  margin-left: auto; margin-right: auto">
 
-                      <font size="5"> Take a <br> Site Photo </font>
-                     	</a>
-                     </li>
-                     <li id="history">
-                        <a href="./history.html" rel="external" data-ajax="false">
-                        <img src="./img/history.png" class="ui-li-thumb" />
-                      <font size="5"> My Health </font>
-                        </a>
-                     </li>
-
-                  </ul>
-               </div>
-            
          </div>
          <!-- /content -->
 
 
-  
-  <div data-role="footer">
-    <div data-role="navbar"  data-position="fixed" data-tap-toggle="false">
-    <ul>
-      <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
-      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
-      <li><a href="./settings.html" data-icon="gear">Settings</a></li>
-    </ul>
-    </div>
-  </div>
- 
+         <!--
+         <div data-role="footer">
+           <div data-role="navbar"  data-position="fixed" data-tap-toggle="false">
+             <ul>
+               <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
+               <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
+               <li><a href="./settings.html" data-icon="gear">Settings</a></li>
+             </ul>
+           </div>
+         </div>
+       -->
 
-      </div>
-      <!-- /page -->
+        </div>
+        <!-- /page -->
 
-   </body>
+        </body>
+        </html>
+        </script>
+    </head>
+    <body>
+    </body>
 </html>
-

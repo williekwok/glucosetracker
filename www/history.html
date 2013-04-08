@@ -90,24 +90,43 @@ $(document).ready(function(){
 		        urine = $.evalJSON(history).urine;
 		        time = $.evalJSON(history).time;
 		        
-		    if (water != "undefined"){
-		      watermetric[arraywatercount] = parseInt(water);
+				fluid = $.evalJSON(history).fluid;
+		        temp = $.evalJSON(history).temp;
+		        pain = $.evalJSON(history).pain;
+		        time = $.evalJSON(history).time;
+				timeTaken = $.evalJSON(history).timeTaken;
+				type = $.evalJSON(history).type;
+
+				
+			if (fluid == "1"){
+				fluidString="0-3 Cups";
+		  	}
+			else if (fluid == "2"){
+				fluidString="4-8 Cups";
+		  	}
+			else if (fluid == "3"){
+				fluidString="8+ Cups";
+		  	}
+
+				
+		    if (fluid != "undefined"){
+		      watermetric[arraywatercount] = parseInt(fluid);
 		      arraywatercount++;
 		  	}
 
-		  	if (pouch != "undefined"){
-		      pouchmetric[arraypouchcount] = parseInt(pouch);
+		  	if (temp != "undefined"){
+		      pouchmetric[arraypouchcount] = parseInt(temp);
 		      arraypouchcount++;
 		  	}
 
-		    if (urine != "undefined"){
-		      urinemetric[arrayurinecount] = parseInt(urine);
+		    if (pain != "undefined"){
+		      urinemetric[arrayurinecount] = parseInt(pain);
 		      arrayurinecount++;
 		  	}
 
 		        
 		    // render a row of data for each record
-		    $("table#history").append('<tr><th> <b class="ui-table-cell-label">Entry</b>' + (ID +1) + '</th><td> <b class="ui-table-cell-label">Water</b>' + water + '</td><td> <b class="ui-table-cell-label">Pouch</b>' + pouch + '</td><td> <b class="ui-table-cell-label">Urine</b>' + urine + '</td><td><b class="ui-table-cell-label">Time</b>'+ time + '</td></tr>');
+		    $("table#history").append('<tr><th> <b class="ui-table-cell-label">Entry</b>' + (ID +1) + '</th><td> <b class="ui-table-cell-label">Type</b>' + type + '</td>><td> <b class="ui-table-cell-label">Fluid</b>' + fluidString + '</td><td> <b class="ui-table-cell-label">Temperature</b>' + temp + '</td><td> <b class="ui-table-cell-label">Pain</b>' + pain + '</td><td> <b class="ui-table-cell-label">Time Taken</b>' + timeTaken + '</td><td><b class="ui-table-cell-label">Time</b>'+ time + '</td></tr>');
 		    ID--;
 		  } // ends loop
 		}
@@ -116,9 +135,9 @@ $(document).ready(function(){
 		}
 
 		  //Graph the metrics, metrics reversed such that latest is on the right.
-		    var plot1 = $.jqplot ('chart1', [watermetric.reverse()], {title: 'Fluid Balance: Cups of Water'});
-		    var plot1 = $.jqplot ('chart2', [pouchmetric.reverse()], {title: 'Fluid Balance: # of Pouch Changes'});
-		    var plot1 = $.jqplot ('chart3', [urinemetric.reverse()], {title: 'Fluid Balance: # of Times Urinate'});
+		    var plot1 = $.jqplot ('chart1', [watermetric.reverse()], {title: 'Cups of Fluid',  axes:{yaxis:{min:0, max:5}} });
+		    var plot2 = $.jqplot ('chart2', [pouchmetric.reverse()], {title: 'Temperature in Celsius'});
+		    var plot3 = $.jqplot ('chart3', [urinemetric.reverse()], {title: 'Pain Level', axes:{yaxis:{min:0, max:10}}});
 
 
 		}
@@ -156,15 +175,15 @@ $(document).ready(function(){
 <h1> Metrics </h1>
 <div>
 
-	<div id="chart1" style="height:300px; width:300px; float: left;"></div>
-	<div id="chart2" style="height:300px; width:300px; float: left"></div>
-	<div id="chart3" style="height:300px; width:300px; float: left"></div>
+	<div id="chart1" style="height:300px; width: 100%; float: left;"></div>
+	<div id="chart2" style="height:300px; width:100%; float: left"></div>
+	<div id="chart3" style="height:300px; width:100%; float: left"></div>
 
 </div>
 
 <div style="clear:both">
 <h1> Logs </h1>
-	 <table data-role="table" id="history" data-mode="reflow" class="ui-responsive table-stroke"> <thead><tr><th>Entry</th><th>Water</th><th>Pouch</th><th>Urine</th><th>Time Submit</th></tr></thead><tbody></table>
+	 <table data-role="table" id="history" data-mode="reflow" class="ui-responsive table-stroke"> <thead><tr><th>Entry</th><th>Type</th><th>Fluid</th><th>Temperature</th><th>Pain</th><th>Time Taken</th><th>Time Submit</th></tr></thead><tbody></table>
 
 </div>
 

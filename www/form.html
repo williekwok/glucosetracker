@@ -8,78 +8,94 @@
 
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
 
-      <script>
-         var userAgent = navigator.userAgent + '';
-         if (userAgent.indexOf('iPhone') > -1) {
-           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
-           var mobile_system = 'iphone';
-         } else if (userAgent.indexOf('Android') > -1) {
-           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
-           var mobile_system = 'android';
-         } else {
-           var mobile_system = '';
-         }
-      </script>
+	<script>
+	var userAgent = navigator.userAgent + '';
+		if (userAgent.indexOf('iPhone') > -1) {
+			document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+			var mobile_system = 'iphone';
+		} else if (userAgent.indexOf('Android') > -1) {
+			document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+			var mobile_system = 'android';
+		} else {
+			var mobile_system = '';
+	}
+	</script>
 
-<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
-<script src="camera.js"></script>
-<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
-<script src="js/app/app.js"></script>
-<script src="js/app/bootstrap.js"></script>
 
+	<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+     
+    <script src="camera.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+	<script src="js/app/app.js"></script>
+    <script src="js/app/bootstrap.js"></script>
+	
 	<style type="text/css">
 
-		#hero{
-			background-color: #FFFFFF;
-			padding: 15px;
-			margin-bottom: 20px;
-			overflow: hidden;	
-		}
+	#hero{
+		background-color: #FFFFFF;
+		padding: 15px;
+		margin-bottom: 20px;
+		overflow: hidden;	
+	}
 
-		.ui-hide-label input.ui-input-text, .ui-hide-label textarea.ui-input-text, .ui-hide-label .ui-input-search, .ui-hide-label div.ui-input-text, .ui-input-search input.ui-input-text, div.ui-input-text input.ui-input-text{
-		font-size: 1.8em;
+	.ui-hide-label input.ui-input-text, .ui-hide-label textarea.ui-input-text, .ui-hide-label .ui-input-search, .ui-hide-label div.ui-input-text, .ui-input-search input.ui-input-text, div.ui-input-text input.ui-input-text{
+	font-size: 2.5em;
 
-		}
+	}
 
-		     .ui-header{
-         background: #3399FF;
-                  text-shadow: 0 0 0;
-         
-         }
+		 .ui-header{
+	 background: #3399FF;
+			  text-shadow: 0 0 0;
+	 
+	 }
 
-		#optionlist li{
-        background-color: #dd4b39; 
-        padding: 15px;
-         margin: 10px;
-  		 border-radius: 15px;
-         overflow: hidden;
-         }
-         
-         #divider{
-         background-color: rgb(133, 191, 99);
+	#optionlist li{
+		background-color: #dd4b39; 
+		padding: 15px;
+		margin: 10px;
+		border-radius: 15px;
+		overflow: hidden;
+	}
 
-         padding: 10px;
-         margin-top: 10px;
-  		 border-radius: 15px;
-         overflow: hidden;
-         align: center;
-         font-size: 5;
-         text-shadow: 0 0 0;
-          
-         }
-         
-         .ui-li-heading{
-         font-size: 22px;
-         }
+	#divider{
+		background-color: rgb(133, 191, 99);
+		padding: 0px;
+		margin-top: 10px;
+		padding-left: 20px;
+		border-radius: 15px;
+		overflow: hidden;
+		align: center;
+		font-size: 15;
+		
+		text-shadow: 0 0 0;
+	}
+
+	.ui-li-heading{
+		font-size: 26px;
+	}
+	
+	fieldset {
+		display:block; 
+		margin:0; 
+		width:%50
+	}
          
 	  </style>
 
-<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
-<script type="text/javascript" src="jquery.json-2.4.js"></script>
-<script type="text/javascript" src="storage.js"></script>
-
-
+	<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+	<script type="text/javascript" src="jquery.json-2.4.js"></script>
+	<script type="text/javascript" src="storage.js"></script>
+	<script type="text/javascript">
+var _start = new Date();
+function formDone() {
+  var _end = new Date();
+  var _diff = _end - _start;
+  var timeSpent= (_diff)*0.001;
+  console.log(timeSpent +" Seconds");
+  return timeSpent;
+}
+</script>
 </head> 
 
 
@@ -87,132 +103,405 @@
 
 <div data-role="page" data-add-back-btn="true">
 	<!-- /header -->
-         <div data-role="header" data-position="fixed">
-            <h1>
-              <font size="5">        
-               Daily Tracker
-              </font>
-            </h1>
-         </div>
-
-<div data-role="content">	
-
-
-<h1 id="feeling" style="text-align: center;">HOW ARE YOU</br>FEELING TODAY?</h1>
-	<div >
-		  <div style="margin-left:auto;
-margin-right:auto;padding-bottom:10px;"> <img src="./img/moods/angry.png" style=" padding: 8px; margin:4px; background:#fff;	border-radius: 15px;" width="80px" />
-	    <img src="./img/moods/whatever.png" style=" padding: 8px; margin:4px;background:#fff;	border-radius: 15px;" width="80px" />
-	     <img src="./img/moods/veryhappy.png" style="padding: 8px; margin:4px; background:#fff;	border-radius: 15px;" width="80px" />
-		 </div>
-		 </div>
+	<div data-role="header" data-position="fixed">
+		<h1>Daily Tracker</h1>
+		 <div data-role="navbar" >
+			<ul>
+				<li><a href="#Fluid" rel="external" ><font size="4">Fluid Balance</font></a></li>
+				<li><a href="#Abdominal" rel="external" ><font size="4">Abdominal Health</font></a></li>
+				<li><a href="#Wound" rel="external" ><font size="4">Wound Care</font></a></li>
+				<li><a href="#Picture" rel="external"><font size="4">Picture</font></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div>
 
 
-		 <div>
-                  <ul data-role="listview" id="optionlist">
-                     
-                  <li id="camera">
-                     <a href="./foo.html" data-transition="slideup" rel="external" data-ajax="false">
-                     	<img src="http://a.dryicons.com/images/icon_sets/stickers_icon_set/png/128x128/camera.png" class="ui-li-thumb" />Surgical Site Picture</a></li>
-                  </ul>
-         
-            
-         </div>
-    <br> 
-    <hr>   
 
- <div id="divider">
-    <h1><font color="#ffffff">
-	Fluid Balance
-    </font></h1>
- </div>  
-      
+		
+<div data-role="content">	 
 
 <form name="save" id="save" action="">
-  
-  <h2> Cups of Water</h2><input type="number" name="water" id="water" placeholder="0">
-  <h2> Number of Pouch Changes</h2><input type="number" name="pouch" id="pouch" placeholder="0">
-  <h2>Number of Times Urinated</h2><input type="number" name="urine" id="urine" placeholder="0">
-  <hr>
-   <div id="divider">
-                  <h1>
-                  <font color="#ffffff">
-					Abdominal Health
-                  </font>
-                  </h1>
-                  </div>         
+	
+<div id="Fluid"></div>
+<input type="hidden" id="FormType" value="single-page">
+<div id="divider">
+	<h1>
+	<font color="#ffffff">
+	Fluid Balance
+	</font>
+	</h1>
+	</div>  
 
-	  <ul data-role="listview" data-inset="true" data-divider-theme="d">
-				<li data-role="fieldcontain">
-					<h1>No Passing of Stool (24Hrs)</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>No Passing of Gas (24Hrs)</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>Abdominal Pain</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>Abdominal Swelling</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>			
-			</ul>
+    <hr> 
 
-	  <hr>
-   <div id="divider">
-                  <h1>
-                  <font color="#ffffff">
-					Wound Care
-                  </font>
-                  </h1>
-                  </div>       
-                  	  <ul data-role="listview" data-inset="true" data-divider-theme="d">
-                    
-					<li data-role="fieldcontain">
-					<h1>Wound Open</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>Wound Pain/Swelling/Redness</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>	
-				</ul>	
+ 
+ 	<h2>
+	<font size="6">
+	How many cups of fluid did you drink yesterday? 
+	</font>
+	</h2>		
+		<form>
+		<fieldset data-role="controlgroup" id="FluidCups" data-type="horizontal">
+			<input type="radio" name="radio-choice-b" id="radio-choice-1" value=1  />
+			<label for="radio-choice-1">0-3 Times</label>
+			<input type="radio" name="radio-choice-b" id="radio-choice-2" value=2 />
+			<label for="radio-choice-2">4-8 Times</label>
+			<input type="radio" name="radio-choice-b" id="radio-choice-3" value=3 />
+			<label for="radio-choice-3">8+ Times</label>		
+		</fieldset>
+		</form>
+		<br>
+		    <hr> 
 
+	<h2>
+	<font size="6">
+	How many times did you empty your pouch yesterday?
+	</font>
+	</h2>		
+		<form>
+  		<fieldset data-role="controlgroup" id="Pouch" data-type="horizontal">
+			<input type="radio" name="radio-choice-b" id="radio-choice-1" value="0-3"  />
+			<label for="radio-choice-1">0-3 Times</label>
+			<input type="radio" name="radio-choice-b" id="radio-choice-2" value="4-6" />
+			<label for="radio-choice-2">4-6 Times</label>
+			<input type="radio" name="radio-choice-b" id="radio-choice-3" value="7+" />
+			<label for="radio-choice-3">7+ Times</label>	
+		</fieldset>
+		</form>
+		<br>
+		    <hr> 
+	<h2>
+	<font size="6">
+	What are your bowel movements like today?
+	</font>
+	</h2>
+		<form>	
+		<fieldset data-role="controlgroup" id="Bowel" data-type="horizontal">
+				<input type="radio" name="radio-choice-b" id="radio-choice-c" value="Solid"  />
+				<label for="radio-choice-c">Solid</label>
+				<input type="radio" name="radio-choice-b" id="radio-choice-d" value="Loose" />
+				<label for="radio-choice-d">Loose</label>
+				<input type="radio" name="radio-choice-b" id="radio-choice-e" value="Watery" />
+				<label for="radio-choice-e">Watery</label>
+		</fieldset>
+		</form>
+		
+<br>
+		    <hr> 
+			
+			
+	<h2>
+	<font size="6">
+	Do you have any of the following symptoms today?
+	</font>
+	</h2>
+	
+	<form>
+	<fieldset id="Symptoms" data-role="controlgroup4">
+		<input type="checkbox" name="checkbox-1a" id="checkbox-1a"  />
+		<label for="checkbox-1a"><font size="4">Dry mouth and tongue</font></label>
+		<input type="checkbox" name="checkbox-2a" id="checkbox-2a"  />
+		<label for="checkbox-2a"><font size="4">Sudden loss of energy</font></label>
+		<input type="checkbox" name="checkbox-4a" id="checkbox-4a"  />
+		<label for="checkbox-4a"><font size="4">Light headed / dizzy</font></label>
+	</fieldset>
+	</form>
+	<br>
+	<hr> 
+	
+		<h2>
+	<font size="6">
+	When did your stoma last work?
+	</font>
+	</h2>
+	
+	<form>
+	<fieldset id="Stoma" data-role="controlgroup4">
+		<input type="checkbox" name="checkbox-1a" id="checkbox-1a"  />
+		<label for="checkbox-1a"><font size="4">Today</font></label>
+		<input type="checkbox" name="checkbox-2a" id="checkbox-2a"  />
+		<label for="checkbox-2a"><font size="4">Yesterday</font></label>
+		<input type="checkbox" name="checkbox-4a" id="checkbox-4a"  />
+		<label for="checkbox-4a"><font size="4">2 or more days ago</font></label>
+	</fieldset>
+	</form>
+	<br>
+	<hr> 
 
- <input type="submit" value="Save" id="savebutton" onclick="alert('Success! Measurements Saved To History'); location.href ='./history.html';">
+<div id="Abdominal"></div>
+<div id="divider">
+	<h1>
+	<font color="#ffffff">
+	Colon Health
+	</font>
+	</h1>
+	</div> 
+<hr>
+  <h2>What is your temperature today?</h2><input type="number" name="temperature" id="temperature" placeholder="0°Celsius">
+<br>
+<hr>
+	<h2>
+	<font size="6">
+	Which of the following have you been able to do over the last 24 hours? Select all that are true.
+	</font>
+	</h2>
+	
+	<form>
+	<fieldset id="ColonSymptoms" data-role="controlgroup4">
+		<input type="checkbox" name="checkbox-1a" id="checkbox-1a"  />
+		<label for="checkbox-1a"><font size="4">Shakes</font></label>
+		<input type="checkbox" name="checkbox-2a" id="checkbox-2a"  />
+		<label for="checkbox-2a"><font size="4">Chills</font></label>
+		<input type="checkbox" name="checkbox-3a" id="checkbox-3a"  />
+		<label for="checkbox-3a"><font size="4">Bloated</font></label>
+		<input type="checkbox" name="checkbox-4a" id="checkbox-4a"  />
+		<label for="checkbox-4a"><font size="4">Nausea</font></label>
+		<input type="checkbox" name="checkbox-5a" id="checkbox-5a"  />
+		<label for="checkbox-5a"><font size="4">Vomiting</font></label>
+	</fieldset>
+	</form>
+	<br>
+	<hr>
+
+	<h2>
+	<font size="6">Some degree of abdominal pain is not unusual after surgery. If you have abdominal pain, how would you characterize it today?</font>
+	</h2>
+	
+	<form>	
+	<fieldset id="PainChar" data-role="controlgroup" data-type="vertical">
+			<input type="radio" name="radio-choice-b" id="radio-choice-c" value="on"  />
+			<label for="radio-choice-c">Pain is same as yesterday</label>
+			<input type="radio" name="radio-choice-b" id="radio-choice-d" value="off" />
+			<label for="radio-choice-d">New pain that was not there before</label>
+			<input type="radio" name="radio-choice-b" id="radio-choice-e" value="other" />
+			<label for="radio-choice-e">Pain is different than yesterday</label>
+			<input type="radio" name="radio-choice-b" id="radio-choice-f" value="other" />
+			<label for="radio-choice-f">Pain is uncontrolled with pain medication</label>
+	</fieldset>		
+	</form>
+	<br>
+	<hr>
+	
+	<h2>
+	<font size="6"> Have would you rate your abdominal pain today? </font>
+	</h2>
+	 
+	<font size= "5">1 to 10 scale. 1 = no pain, 10 = worst pain imaginable  </font>
+
+	<form>
+	<fieldset id="Pain" data-role="controlgroup" data-type="horizontal">
+		<input type="radio" name="radio-choice-b" id="radio-choice-1" value=1  />
+		<label for="radio-choice-1">1</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-2" value=2 />
+		<label for="radio-choice-2">2</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-3" value=3 />
+		<label for="radio-choice-3">3</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-4" value=4  />
+		<label for="radio-choice-4">4</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-5" value=5 />
+		<label for="radio-choice-5">5</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-6" value=6 />
+		<label for="radio-choice-6">6</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-7" value=7  />
+		<label for="radio-choice-7">7</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-8" value=8 />
+		<label for="radio-choice-8">8</label>
+		<input type="radio" name="radio-choice-b" id="radio-choice-9" value=9 />
+		<label for="radio-choice-9">9</label>			
+		<input type="radio" name="radio-choice-b" id="radio-choice-10" value=10 />
+		<label for="radio-choice-10">10+</label>	
+	</fieldset>
+	</form>
+	
+<br>
+<hr>
+
+	
+<div id="Wound"></div>
+<div id="divider">
+	<h1>
+	<font color="#ffffff">
+	Wound Care
+	</font>
+	</h1>
+
+	</div>       
+
+	<h2>
+	<font size="6">
+	Please take a look at your surgical incision site(s). Are any of the following true today?
+	</font>
+	</h2>
+
+	<form>
+	<fieldset id="Wound" data-role="controlgroup7">
+		<input type="checkbox" name="checkbox-1a" id="checkbox-1a"  />
+		<label for="checkbox-1a"><font size="4">Wound is red/painful/swollen</font></label>
+		<input type="checkbox" name="checkbox-2a" id="checkbox-2a"  />
+		<label for="checkbox-2a"><font size="4">Wound is open</font></label>
+			<input type="checkbox" name="checkbox-3a" id="checkbox-3a"  />
+		<label for="checkbox-3a"><font size="4">Wound is tender/painful to touch</font></label>
+		<input type="checkbox" name="checkbox-4a" id="checkbox-4a"  />
+		<label for="checkbox-4a"><font size="4">Wound is draining fluid</font></label>
+	</fieldset>
+	</form>
+	<br>
+	<hr>
+	
+<div id="Picture"></div>
+<div id="divider">
+	<h1>
+	<font color="#ffffff">
+	Picture
+	</font>
+	</h1>
+
+	</div>  	
+	<br></br>	
+	<div>
+		<ul data-role="listview" id="optionlist">
+		 
+		<li id="camera">
+		 <a href="./foo.html" data-transition="slideup">
+			<img src="./img/camera.svg" class="ui-li-thumb" />Surgical Site Picture</a></li>
+		</ul>
+	</div>
+	
+	<hr>
+				
+	
+	<br>
+ <input type="submit" value="Save" id="savebutton" onclick="alert('Success! Measurements Saved To History'); savetoStorage(); ">
 </form>
 
+
+<script>
+		
+	var lastID = localStorage.getItem( 'lastID' );
+	 
+	// if the local storage comes up empty, reset count to zero
+	function initializeID() {
+	  var lastID = localStorage.getItem( 'lastID' );
+	  if ( lastID == null ) {
+	    location.reload(true);
+	    localStorage.setItem( 'lastID',0 );
+	  }
+	}
+	 
+	initializeID();
+
+	
+	// before the function, create a uniqueID variable
+	var uniqueID = lastID;
+	
+	function savetoStorage() {
+	    var currentTime = new Date();
+            var monthNames = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                               "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC" ];
+            var month = monthNames[(currentTime.getMonth())];
+            var day = currentTime.getDate();
+            var year = currentTime.getFullYear();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            if (minutes < 10){
+            minutes = "0" + minutes;
+            }
+            var daynight
+            if (hours>11){
+            	daynight="PM"
+            }
+            else{
+            	daynight="AM"
+            }
+            
+		var timeTaken=formDone();
+
+		//Get All Variables to save in form
+		var fluid= $("#FluidCups :radio:checked").val();
+		var temp = document.getElementById("temperature").value; 
+		var type = document.getElementById("FormType").value; 
+		console.log(type);
+		var pain = $("#Pain :radio:checked").val();
+
+		var time = month + "/" + day + "/" + year + " "+ hours+":"+minutes+daynight;
+	        	        
+
+	    // convert the ID to a string so it can be used as a key
+	    var formSaveID = uniqueID.toString();
+        console.log(formSaveID);
+
+	    // assign everything to an object for local storage        
+	    var newFormSave = {};
+	        newFormSave.id = uniqueID;
+	        newFormSave.fluid = fluid;
+	        newFormSave.temp = temp;
+	        newFormSave.pain = pain;
+	        newFormSave.time = time;
+			newFormSave.timeTaken = timeTaken;
+			newFormSave.type = type;
+
+
+	    // turn data into JSON string
+	    localStorage.setItem( formSaveID, JSON.stringify( newFormSave ) );
+	    // reload history with new entry; see below
+	    loadHistory(uniqueID);
+	    // increment the ID
+	    uniqueID++;
+	    // save next available ID (note: bugs/features in iOS demand
+	    // the key be removed first, and then reset; a straight
+	    // overwrite using the same key does not work)
+	    localStorage.removeItem( 'lastID' );
+	    localStorage.setItem( 'lastID', uniqueID );
+	    // optional; this part clears all of the values in the form        
+	    //$form.find('input[type="text"],input[type="email"]').val("");
+	    // again optional; this is where you could actually post via Ajax
+	   // $("#save").ajaxSubmit();
+	    return false;
+	}
+	
+		function loadHistory(uniqueID) {
+		  // clear table and append table header row
+		  $("table#history").html("").append('<thead><tr><th>Entry</th><th>Fluid</th><th>Temperature</th><th>Pain</th><th>Time Submit</th><th>Time Taken</th></tr></thead><tbody>');
+		  // for the loop, start at the beginning
+		  ID = uniqueID - 1;
+		  // the loop count is the same as the last unique ID;
+		  // if the last record saved had the ID of 57, then
+		  // there are 57 records to display
+
+		  while (ID>=0) {
+		    ID.toString();
+		    // pull the JSON string for the current ID in the loop 
+		    // and extract data into variables
+		    var history = localStorage.getItem(ID);
+		        fluid = $.evalJSON(history).fluid;
+		        temp = $.evalJSON(history).temp;
+		        pain = $.evalJSON(history).pain;
+		        time = $.evalJSON(history).time;
+				timeTaken = $.evalJSON(history).time;
+
+		        
+		        console.log(time);
+		      
+		        
+		    // render a row of data for each record
+		    $("table#history").append('<tr><th>' + (ID +1) + '</th><td>' + fluid + '</td><td>' + temp + '</td><td>' + pain + '</td><td>' + timeTaken + '</td><<td>'+ time + '</td></tr>');
+		    ID--;
+		  } // ends loop
+		  $("table#history").append("</tbody>")
+		}
+	loadHistory(uniqueID);
+		
+</script>
 
 
 </div>
 <!-- /content -->
 
- <div data-role="footer">
-    <div data-role="navbar" data-position="fixed" data-tap-toggle="false">
+ <div data-role="footer" data-position="fixed">
+    <div data-role="navbar" >
     <ul>
       <li><a href="./index.html" data-icon="plus" rel="external" data-ajax="false">Home</a></li>
-      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
+      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">History</a></li>
       <li><a href="./settings.html" data-icon="gear" rel="external" data-ajax="false">Settings</a></li>
     </ul>
     </div>

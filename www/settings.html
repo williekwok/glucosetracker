@@ -1,45 +1,43 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-	<title>VitalClik Patient Demo</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
-	
-	<style type="text/css">
+	      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      
+      <title>VitalClik Tracker</title>
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/generated/jquery.mobile.flatui.min.css">
+      <link rel="stylesheet" href="jquery-mobile-vitalclik/src/css/vitalclik.css" type="text/css">
 
-		#hero{
-			background-color: #FFFFFF;
-			padding: 15px;
-			margin-bottom: 20px;
-			overflow: hidden;	
-		}
-	  </style>
-	  
-	  
-		<meta charset="utf-8" />
-	  <title>jQuery UI Accordion - Default functionality</title>
-	  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-	  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-	  <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-	  <link rel="stylesheet" href="/resources/demos/style.css" />
-	  <script>
-	  $(function() {
-		$( "#accordion" ).accordion();
-	  });
-	  </script>
-	    <meta charset="utf-8" />
-	  <title>jQuery UI Datepicker - Default functionality</title>
-	  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-	  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-	  <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-	  <link rel="stylesheet" href="/resources/demos/style.css" />
-	  <script>
-	  $(function() {
-		$( "#datepicker" ).datepicker();
-	  });
-	  </script>
+      	<style type="text/css">
+      	#settings{
+      		color: black;
+      	}
+
+</style>
+
+      <script type="text/javascript">
+        var mobile_system = '';
+
+        if (!!navigator.userAgent.match(/iphone/gi)) {
+          // document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-iphone.js">\x3C/script>');
+          mobile_system = 'iphone';
+        } else if (!!navigator.userAgent.match(/android/gi)) {
+          // document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-android.js">\x3C/script>');
+          mobile_system = 'android';
+        }
+      </script>
+
+      <script src="cordova-2.4.0.js"></script>
+      <script src="camera.js"></script>
+      <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+      <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+      <script src="js/app/app.js"></script>
+      <script src="js/app/bootstrap.js"></script>
 	
 </head> 
 
@@ -54,9 +52,60 @@
 	</div>
 	
 <div data-role="content">	
-SETTINGS
-		
+<div id="settings">
+<h2>SETTINGS</h2>
+
+<h3>Notifications</h3>
+
+
+<li data-role="fieldcontain">
+            <label for="select-choice-1" class="select">Set Time for Reminder to fill in daily tracker:
+</label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="standard"> 6AM</option>
+                <option value="rush">7AM</option>
+                <option value="express">8AM</option>
+                <option value="overnight">9AM</option>
+                <option value="standard"> 10AM</option>
+                <option value="rush">11AM</option>
+                <option value="express">Noon</option>
+            </select>
+        </li>
+
+<br>
+
+<li data-role="fieldcontain">
+            <label for="select-choice-1" class="select">Set alert for missed Daily Tracker:
+</label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="standard"> Every hour after reminder</option>
+                <option value="rush">Every 30min after reminder</option>
+                <option value="express">Every 2 hours after reminder</option>
+
+            </select>
+        </li>
+<h3>Profile Picture</h3>
+
+Take a profile picture:
+<button>  Take Photo </button>
+
+<br> 
+
+
+<button>  Save Settings </button>
+
 </div>
+</div>
+  <div data-role="footer">
+           <div data-role="navbar"  data-position="fixed" data-tap-toggle="false">
+             <ul>
+             	               <li><a href="./index.html" data-icon="plus" rel="external" data-ajax="false">Home</a></li>
+
+               <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
+               <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
+             </ul>
+           </div>
+         </div>
 <!-- /content -->
 </div>
 
