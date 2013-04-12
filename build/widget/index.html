@@ -1,201 +1,106 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-      <title>VitalClik Tracker</title>
+<head>
+    <title>Glucose Tracker</title>
+   <link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+	<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+    <script src="BlackBerry-JQM-all.min.js"></script>
 
-      <script>
-         var userAgent = navigator.userAgent + '';
-         if (userAgent.indexOf('iPhone') > -1) {
-           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
-           var mobile_system = 'iphone';
-         } else if (userAgent.indexOf('Android') > -1) {
-           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
-           var mobile_system = 'android';
-         } else {
-           var mobile_system = '';
-         }
-      </script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/bootstrap.js"></script>
+</head>
+<body>
 
-        <script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
-     
-      <script src="camera.js"></script>
-  <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
-  <script src="js/app/app.js"></script>
-     <script src="js/app/bootstrap.js"></script>
-      <style type="text/css">
+<div data-role="page">
 
-         .ui-header{
-         	background: #3399FF;
-            text-shadow: 0 0 0;
-         
-         }
-         #hero{
-         	padding: 15px;
-         	margin-bottom: 30px;
-  			   border-radius: 15px;
-         	overflow: hidden;
-         	align: center;
-         }
-         #actionbar{
-         	background-color: #dd4b39;
-         	padding: 10px;
-  		 	  border-radius: 15px;
-         	overflow: hidden;
-         	align: center;
-         	font-size: 5;
-         	text-shadow: 0 0 0;
-         
-         }
-         #hero h2{
-         	align:center;
-         }
-         
-         img.center {   
-         	display: block;   
-         	margin-left: auto;   
-         	margin-right: auto; }
-         
-         #welcome{
-         	font-weight:bold;
-         	text-align: left;
-         	font-size:6;
-         }
-         #optionlist li{
-            background-color: white;
-          	padding: 15px;
-         }
-         
-         .circular {
-          margin-left: auto;
-          margin-right: auto;
-          width: 150px;
-          height: 150px;
-          border-radius: 150px;
-          -webkit-border-radius: 150px;
-          -moz-border-radius: 150px;
-          background: url(./img/profile3.jpg) no-repeat;
-          }
+    <div data-role="header" data-theme="b" >
+        <h1>Glucose Tracker</h1>
+    </div><!-- /header -->
 
-   </style>
-   </head>
-   <body>
+    <div data-role="content">
+	<h2>
+	<SCRIPT LANGUAGE="Javascript">
+<!-- 
 
-      <div data-role="page">
- 
-         <div data-role="header" data-position="fixed">
-            <h1>
-              <font size="5">        
-                VitalClik
-              </font>
-            </h1>
-         </div>
-         <!-- /header -->
-         
-         <div data-role="content">
-              <!-- <img src="./img/logo.png" width="250px" class="center" />-->
-              <div id="hero">
+// Array of day names
+var dayNames = new Array("Sunday","Monday","Tuesday","Wednesday",
+				"Thursday","Friday","Saturday");
 
-               <div class="circular"></div>
-                <h3 style="text-align: center; margin-bottom: -20px;"> Welcome, Mr. John Doe </h3>
+// Array of month Names
+var monthNames = new Array(
+"January","February","March","April","May","June","July",
+"August","September","October","November","December");
 
-                <h4 style="text-align: center;">
+var now = new Date();
+document.write("Today is: " +dayNames[now.getDay()] + ", " + 
+monthNames[now.getMonth()] + " " + 
+now.getDate() + ", " + now.getFullYear());
 
-                    <script type="text/javascript">
-                        var currentTime = new Date()
-                        var monthNames = [ "JAN", "FEB", "March", "Apr", "May", "Jun",
-                                           "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC" ];
-                        var month = monthNames[(currentTime.getMonth())]
-                        var day = currentTime.getDate()
-                        var year = currentTime.getFullYear()
-                        document.write(month + " " + day + " " + year)
-                     </script>
-
-                     
-                    </h4>
-
-                  <a href="./form.html"  style="text-decoration: none;" data-transition="slideup" rel="external" data-ajax="false">
-				          <div id="actionbar">
-				
-                  <h3 style="text-align: center; text-decoration: none;">
-                  <font color="#ffffff">
-                  <script type="text/javascript">
-                  var favorites = ["Drink More Water!", "Please fill today's tracker!", "Watch fluid loss!"]
-                  var favorite = favorites[Math.floor(Math.random() * favorites.length)]
-                  var postmessage = favorite
-                  document.write(postmessage)
-                  </script>
-                  </font>
-                  </h3>
-                  </div>
-                   </a>
-                  
-                 <hr></hr>
+// -->
+</SCRIPT>
+</h2>
+	<hr class="BB10group">
+		<div style="background-image:url('./img/greenbg.jpg'); color:white; padding: 15px; margin: 0px;">
+		<h2>Your last measurement: </h2> 
+		<script>
+		var lastID = localStorage.getItem( 'indexID' );
+		var uniqueID = lastID;
 
 
-                <div class="ui-grid-b" style="background-color: white; padding: 10px;  text-align: center; border-style:solid;
-border-width:3px; border-color:gray;">
-                    <div class="ui-block-a"><font size="6"> 
-                       <b> 10 </b></font><br> DAYS POST DISCHARGE</div>
-                    <div class="ui-block-b"><font size="6" color="green"> 
-                        <b> OK </b></font><br> STATUS</div>
-                    <div class="ui-block-c"><font size="6"> 
-                       <b> 2 </b></font> <br>MESSAGES</div>
-               </div><!-- /grid-b -->
-              </div>
-            
+		  // for the loop, start at the beginning
+		  ID = uniqueID - 1;
+		
+		if (ID>=0){
+		
+		ID.toString();
+		    // pull the JSON string for the current ID in the loop 
+		    // and extract data into variables
+		    logger = JSON.parse(localStorage.getItem(ID));
+			 bg = logger.bg;
+			 period= logger.period;
+			 time = logger.time;
+				document.write( "<h2 style='text-align: center; font-size: 300%'>"+ bg + " mg/dL </h2>");
+				document.write(  period + " entered on " + time);
 
-               <div>
-                  <ul data-role="listview" id="optionlist">
-                     <li id="tracker">
-                        <a href="./form.html" data-transition="slideup" rel="external" data-ajax="false">
-                       
-                        <img src="./img/tracker.png" class="ui-li-thumb" style="margin-left: 20px;" />
-                          <font size="5"> Fill your <br> Daily Tracker </font>
-                        </a>
-                     </li>
-                     <li id="camera">
-                     <a href="./foo.html" data-transition="slideup" rel="external" data-ajax="false">
-                     	<img src="./img/picture.png" class="ui-li-thumb" /> 
+		}
+		else{
+		document.write("<h2 style='text-align: center; font-size: 200%'> You have not entered any data yet </h2>");
+            document.write( " Please add a new log!");
 
-                      <font size="5"> Take a <br> Site Photo </font>
-                     	</a>
-                     </li>
-                     <li id="history">
-                        <a href="./history.html" rel="external" data-ajax="false">
-                        <img src="./img/history.png" class="ui-li-thumb" />
-                      <font size="5"> My Health </font>
-                        </a>
-                     </li>
+		}
+		
+		</script>
+		</div>
+			<hr class="gradient">
 
-                  </ul>
-               </div>
-            
-         </div>
-         <!-- /content -->
+		<div class="BB10Container">
+		    <h2>Blood glucose target range</h2>
+			<hr class="gradient">
 
+	<h3>  70 – 130 (mg/dL) before meal </h3>
+		<h3>  Less than 180 mg/dL after meals<h3p>
 
-  
-  <div data-role="footer">
-    <div data-role="navbar"  data-position="fixed" data-tap-toggle="false">
-    <ul>
-      <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
-      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
-      <li><a href="./settings.html" data-icon="gear">Settings</a></li>
-    </ul>
+</div>
+
+    </div><!-- /content -->
+<div data-role="footer" data-position="fixed">
+    <div data-role="actionbar">
+        <div id="o1" data-role="action" class="active" onclick="javascript&colon;location.href='form.html'">
+            <img src="./img/clipboard.svg" alt="" />
+            <p>Add</p>
+        </div>
+        <div id="o2" data-role="action"  class="active" onclick="javascript&colon;location.href='history.html'">
+            <img src="./img/history.png" alt="" />
+            <p> Logs </p>
+        </div>
+        <div id="o3" data-role="action" rel="external" data-ajax="false" onclick="location.href='camera.html'">
+            <img src="./img/camera.svg" alt="" />
+            <p>Camera</p>
+        </div>
     </div>
-  </div>
- 
+</div>
+</div><!-- /page -->
 
-      </div>
-      <!-- /page -->
-
-   </body>
+</body>
 </html>
-

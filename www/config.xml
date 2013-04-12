@@ -26,12 +26,12 @@
         xmlns:rim="http://www.blackberry.com/ns/widgets"
 	version="1.0.0.0" id="org.apache.cordova.example">
 
-  <name>cordovaExample</name>
+  <name>Glucose Tracker</name>
 
-  <author>Your Name Here</author>
+  <author>Willie Kwok</author>
 
   <description>
-       A sample Apache Cordova application that responds to the deviceready event.
+       A sample Apache Cordova application
   </description>
     
   <license href="http://opensource.org/licenses/alphabetical">
@@ -75,7 +75,7 @@
 
   <icon rim:hover="false" src="res/icon/blackberry/icon-80.png" />
   <icon rim:hover="true" src="res/icon/blackberry/icon-80.png" />
-
+<icon src="img/icon.png" width="72" height="72" />
   <rim:loadingScreen backgroundColor="#CFCFCF"
                      foregroundImage="res/screen/blackberry/screen-225.png"
 		     onFirstLaunch="true">

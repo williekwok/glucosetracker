@@ -1,225 +1,172 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-	<title>VitalClik Patient Demo</title> 
-<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Forms Gallery</title>
+    <link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
+		<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+    <script src="BlackBerry-JQM-all.min.js"></script>
 
-      <script>
-         var userAgent = navigator.userAgent + '';
-         if (userAgent.indexOf('iPhone') > -1) {
-           document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
-           var mobile_system = 'iphone';
-         } else if (userAgent.indexOf('Android') > -1) {
-           document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
-           var mobile_system = 'android';
-         } else {
-           var mobile_system = '';
-         }
-      </script>
+	</head>
+	<body>
+		<style type="text/css" media="screen">
+			.ui-radio, .ui-radio * { 
+				outline: none;
+			}
+			
+			textarea.ui-input-text {
+				width: 708px;
+			}
+			input.ui-input-text {
+				width: 708px;
+			}
+			.ui-field-contain .ui-slider.ui-slider-switch {
+				float:right;
+			}
+			
+			.ui-controlgroup.ui-controlgroup-horizontal {
+				float: right;
+			}
+			
+			.ui-field-contain div.ui-slider:not(.ui-slider-switch), .ui-field-contain .ui-controlgroup-controls, .ui-field-contain .ui-controlgroup .ui-controlgroup-controls {
+				float: right;
+				width: 75%;
+			}
+		</style>
+		<div data-role="page">
+			<div data-role="header" data-theme="b" data-position="fixed">
+				<h1>Glucose Tracker</h1>
+			</div><!-- /header -->
+			
+			<div data-role="content">
 
-<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
-<script src="camera.js"></script>
-<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
-<script src="js/app/app.js"></script>
-<script src="js/app/bootstrap.js"></script>
+			<!-- Text field -->
+			<div data-role="fieldcontain">
+				<label for="basic">Blood Glucose Reading (mg/dL)</label>
+				<input type="number" name="text-input" id="bglevel" placeholder="Enter BG Here"/>
+			</div>
+			<hr class="gradient">
+			
+			<!-- Text Gradient -->
+			<div data-role="fieldcontain">
+				<label for="textarea">Notes</label>
+				<textarea name="textarea" id="comment" placeholder="Enter any notes about this BG reading here"></textarea>
+			</div>
 
-	<style type="text/css">
+			<hr class="gradient">
 
-		#hero{
-			background-color: #FFFFFF;
-			padding: 15px;
-			margin-bottom: 20px;
-			overflow: hidden;	
-		}
+			<!-- Drop Down -->
+			<div data-role="fieldcontain">
+				<!--<select name="select-choice-1" id="select-choice-custom" data-native-menu="false">-->
+				<label for="select-choice-1"> Time </label>
+				<select name="select-choice-1" id="period">
+					<option value="Before Breakfast">Before Breakfast</option>
+					<option value="After Breakfast">After Breakfast</option>
+					<option value="Before Lunch">Before Lunch</option>
+					<option value="After Lunch">After Lunch</option>
+					<option value="Before Dinner">Before Dinner</option>
+					<option value="After Dinner">After Dinner</option>
+					<option value="Before Activity">Before Activity</option>
+					<option value="During Activity">During Activity</option>
+					<option value="After Activity">After Activity</option>
+					<option value="Before Bed">Before Bed</option>
+					<option value="During Night">During Night </option>
+					<option value="Other">Other</option>
 
-		.ui-hide-label input.ui-input-text, .ui-hide-label textarea.ui-input-text, .ui-hide-label .ui-input-search, .ui-hide-label div.ui-input-text, .ui-input-search input.ui-input-text, div.ui-input-text input.ui-input-text{
-		font-size: 1.8em;
+				</select>
+			</div>
 
-		}
+		<hr class="gradient">
+		
+		<button onclick="savetoStorage(); alert('Successfully Saved'); location.href='history.html';"> Save </button>
+		
+<script>
+		
+	var indexID = localStorage.getItem( 'indexID' );
+	 
+	// if the local storage comes up empty, reset count to zero
+	function initializeID() {
+	  var indexID = localStorage.getItem( 'indexID' );
+	  if ( indexID == null ) {
+	    location.reload(true);
+	    localStorage.setItem( 'indexID',0 );
+	  }
+	}
+	 
+	initializeID();
+	
+	// before the function, create a uniqueID variable
+	var uniqueID = indexID;
+	
+	function savetoStorage() {
+	    var currentTime = new Date();
+            var monthNames = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                               "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC" ];
+            var month = monthNames[(currentTime.getMonth())];
+            var day = currentTime.getDate();
+            var year = currentTime.getFullYear();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            if (minutes < 10){
+            minutes = "0" + minutes;
+            }
+            var daynight
+            if (hours>11){
+            	daynight="PM"
+            }
+            else{
+            	daynight="AM"
+            }
+			
+		var bg = document.getElementById("bglevel").value; 
+		var note = document.getElementById("comment").value; 
+		var period = document.getElementById("period").value; 
+		var time = month + "/" + day + "/" + year + " "+ hours+":"+minutes+daynight;
+		
+		var formSaveID = uniqueID.toString();
 
-		     .ui-header{
-         background: #3399FF;
-                  text-shadow: 0 0 0;
-         
-         }
+	    // assign everything to an object for local storage        
+	    var newFormSave = {};
+	        newFormSave.bg = bg;
+	        newFormSave.note = note;
+	        newFormSave.period = period;
+	        newFormSave.time = time;
 
-		#optionlist li{
-        background-color: #dd4b39; 
-        padding: 15px;
-         margin: 10px;
-  		 border-radius: 15px;
-         overflow: hidden;
-         }
-         
-         #divider{
-         background-color: rgb(133, 191, 99);
+		localStorage.setItem( formSaveID, JSON.stringify( newFormSave ) );
+	    // reload history with new entry; see below
+	    // increment the ID
+	    uniqueID++;
+	    // save next available ID (note: bugs/features in iOS demand
+	    // the key be removed first, and then reset; a straight
+	    // overwrite using the same key does not work)
+	    localStorage.removeItem( 'indexID' );
+	    localStorage.setItem( 'indexID', uniqueID );
+	    // optional; this part clears all of the values in the form        
+	    //$form.find('input[type="text"],input[type="email"]').val("");
+	    // again optional; this is where you could actually post via Ajax
+	   // $("#save").ajaxSubmit();
+	    return false;
+		}	
+</script>
 
-         padding: 10px;
-         margin-top: 10px;
-  		 border-radius: 15px;
-         overflow: hidden;
-         align: center;
-         font-size: 5;
-         text-shadow: 0 0 0;
-          
-         }
-         
-         .ui-li-heading{
-         font-size: 22px;
-         }
-         
-	  </style>
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed">
+				<div id="action-bar-area" data-role="actionbar">
+					<div data-role="back"></div>
+					<div id="o2" data-role="action" class="active" onclick="javascript&colon;location.href='index.html'">
+            <img src="./img/heart.svg" alt="" />
+            <p>Home</p>
+        </div>
+<div id="o2" data-role="action" class="active" onclick="javascript&colon;location.href='history.html'">
+            <img src="./img/history.png" alt="" />
+            <p>Logs</p>
+        </div>
 
-<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
-<script type="text/javascript" src="jquery.json-2.4.js"></script>
-<script type="text/javascript" src="storage.js"></script>
-
-
-</head> 
-
-
-<body> 
-
-<div data-role="page" data-add-back-btn="true">
-	<!-- /header -->
-         <div data-role="header" data-position="fixed">
-            <h1>
-              <font size="5">        
-               Daily Tracker
-              </font>
-            </h1>
-         </div>
-
-<div data-role="content">	
-
-
-<h1 id="feeling" style="text-align: center;">HOW ARE YOU</br>FEELING TODAY?</h1>
-	<div >
-		  <div style="margin-left:auto;
-margin-right:auto;padding-bottom:10px;"> <img src="./img/moods/angry.png" style=" padding: 8px; margin:4px; background:#fff;	border-radius: 15px;" width="80px" />
-	    <img src="./img/moods/whatever.png" style=" padding: 8px; margin:4px;background:#fff;	border-radius: 15px;" width="80px" />
-	     <img src="./img/moods/veryhappy.png" style="padding: 8px; margin:4px; background:#fff;	border-radius: 15px;" width="80px" />
-		 </div>
-		 </div>
-
-
-		 <div>
-                  <ul data-role="listview" id="optionlist">
-                     
-                  <li id="camera">
-                     <a href="./foo.html" data-transition="slideup" rel="external" data-ajax="false">
-                     	<img src="http://a.dryicons.com/images/icon_sets/stickers_icon_set/png/128x128/camera.png" class="ui-li-thumb" />Surgical Site Picture</a></li>
-                  </ul>
-         
-            
-         </div>
-    <br> 
-    <hr>   
-
- <div id="divider">
-    <h1><font color="#ffffff">
-	Fluid Balance
-    </font></h1>
- </div>  
-      
-
-<form name="save" id="save" action="">
-  
-  <h2> Cups of Water</h2><input type="number" name="water" id="water" placeholder="0">
-  <h2> Number of Pouch Changes</h2><input type="number" name="pouch" id="pouch" placeholder="0">
-  <h2>Number of Times Urinated</h2><input type="number" name="urine" id="urine" placeholder="0">
-  <hr>
-   <div id="divider">
-                  <h1>
-                  <font color="#ffffff">
-					Abdominal Health
-                  </font>
-                  </h1>
-                  </div>         
-
-	  <ul data-role="listview" data-inset="true" data-divider-theme="d">
-				<li data-role="fieldcontain">
-					<h1>No Passing of Stool (24Hrs)</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>No Passing of Gas (24Hrs)</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>Abdominal Pain</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>Abdominal Swelling</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>			
-			</ul>
-
-	  <hr>
-   <div id="divider">
-                  <h1>
-                  <font color="#ffffff">
-					Wound Care
-                  </font>
-                  </h1>
-                  </div>       
-                  	  <ul data-role="listview" data-inset="true" data-divider-theme="d">
-                    
-					<li data-role="fieldcontain">
-					<h1>Wound Open</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain">
-					<h1>Wound Pain/Swelling/Redness</h1>
-					<select name="flip2" id="flip2" data-role="slider">
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</li>	
-				</ul>	
-
-
- <input type="submit" value="Save" id="savebutton" onclick="alert('Success! Measurements Saved To History'); location.href ='./history.html';">
-</form>
-
-
-
-</div>
-<!-- /content -->
-
- <div data-role="footer">
-    <div data-role="navbar" data-position="fixed" data-tap-toggle="false">
-    <ul>
-      <li><a href="./index.html" data-icon="plus" rel="external" data-ajax="false">Home</a></li>
-      <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
-      <li><a href="./settings.html" data-icon="gear" rel="external" data-ajax="false">Settings</a></li>
-    </ul>
-    </div>
-  </div>
-  
-</div>
-<!-- /page -->
-
-</body>
+        <div id="o4" data-role="action" onclick="javascript&colon;location.href='camera.html'">
+            <img src="./img/camera.svg" alt="" />
+            <p>Camera</p>
+        </div>			</div>
+		</div><!-- /page -->
+	</body>
 </html>

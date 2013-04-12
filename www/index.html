@@ -1,157 +1,106 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black">
-      
-      <title>VitalClik Tracker</title>
-      <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
-      <link rel="stylesheet" href="jquery-mobile-vitalclik/generated/jquery.mobile.flatui.min.css">
-      <link rel="stylesheet" href="jquery-mobile-vitalclik/src/css/vitalclik.css" type="text/css">
+<head>
+    <title>Glucose Tracker</title>
+   <link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
 
-      <script type="text/javascript">
-        var mobile_system = '';
+	<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>
+    <script src="BlackBerry-JQM-all.min.js"></script>
 
-        if (!!navigator.userAgent.match(/iphone/gi)) {
-          // document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
-          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-iphone.js">\x3C/script>');
-          mobile_system = 'iphone';
-        } else if (!!navigator.userAgent.match(/android/gi)) {
-          // document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
-          document.write('\x3Cscript type="text/javascript" src="js/lib/cordova-android.js">\x3C/script>');
-          mobile_system = 'android';
-        }
-      </script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/bootstrap.js"></script>
+</head>
+<body>
 
-      <script src="cordova-2.4.0.js"></script>
-      <script src="camera.js"></script>
-      <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-      <script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
-      <script src="js/app/app.js"></script>
-      <script src="js/app/bootstrap.js"></script>
-        <script src="http://www.parsecdn.com/js/parse-1.2.2.min.js"></script>
+<div data-role="page">
 
+    <div data-role="header" data-theme="b" >
+        <h1>Glucose Tracker</h1>
+    </div><!-- /header -->
 
-      <script>
-        Parse.initialize("EknvtH4nQxYSI3a7eJOUr62KYnHp4mIJSonI5v1B", "U4zPMfFKTmfMQPVz91eMDqcaZv2uAP2S6v1pAwKM");
-        //if (Parse.User.current()) {
-        //} else {
-         // window.location.href = "./login.html";
-        //}
+    <div data-role="content">
+	<h2>
+	<SCRIPT LANGUAGE="Javascript">
+<!-- 
 
-      </script>
+// Array of day names
+var dayNames = new Array("Sunday","Monday","Tuesday","Wednesday",
+				"Thursday","Friday","Saturday");
 
-    </head>
-    <body>
-      <div data-role="page">
+// Array of month Names
+var monthNames = new Array(
+"January","February","March","April","May","June","July",
+"August","September","October","November","December");
 
-         <div data-role="header" data-position="fixed" class="header">
-            <h1>VitalClik <span class="date"></span></h1>
-            
-            <div class="profile">
-              <img src="img/profile3.jpg">
-              <span> Welcome, <script type="text/javascript">
-          currentUser = Parse.User.current();
-          var name = currentUser.getUsername();
-          document.write(name);
-                     </script>  </span>
-            </div>
-         </div>
+var now = new Date();
+document.write("Today is: " +dayNames[now.getDay()] + ", " + 
+monthNames[now.getMonth()] + " " + 
+now.getDate() + ", " + now.getFullYear());
 
-         <div data-role="content">
-              
-              <div class="hero">
-                <div class="ui-grid-a">
-                    <!-- <div class="ui-grid-solo">
-                      <img src="img/alert.svg" class="svg-icon">
-                      <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
-                    </div>
-                    <div class="ui-grid-solo">
-                      <img src="img/alert.svg" class="svg-icon">
-                      
-                      <a href="./form.html"  data-transition="slideup" rel="external" data-ajax="false" class="fn-notify"></a>
-                    </div> -->
-
-                    <!-- Change to not-okay for opposite -->
-                    <div class="ui-grid-solo notice okay">
-                      <img src="img/thumbs.svg">
-                      <p>Thank you for completing today's tracker. There have been no identified concerns.</p>
-                      <p>However, if you have any concerns we did not ask about, please call the Nurse Telephone Services at 416—123—4567</p>
-                    </div>
-
-                    <div class="ui-block-a ui-block">
-                      <span class="number">10 </span>DAYS POST DISCHARGE
-                    </div>
-                    <div class="ui-block-c ui-block last" >
-                       <a href="./message.html" rel="external" data-ajax="false" style="color: #39f">
-                       <span class="number">2 </span></a>MESSAGES
-                    </div>
-               </div><!-- /grid-b -->
-              </div>
-
-              <div class="homeScreen ui-grid-a">
-                <div class="ui-block-solo chooser">
-                  <p style="font-size: 20px">What would you like to do?</p>
-                </div>
-                <div class="ui-block-a ui-block">
-                  <a href="./form.html" rel="external" data-ajax="false">
-                    <img src="img/clipboard.svg" alt="" class="homeIcon">
-                    <p style="font-size: 20px"> Complete your Daily Tracker (Single)</p>
-                  </a>
-
-                </div>
-                <div class="ui-block-b ui-block">
-                  <a href="./form4.html" rel="external" data-ajax="false">
-                     <img src="img/clipboard.svg" alt="" class="homeIcon">
-                    <p style="font-size: 20px">Complete your Daily Tracker (Multi)</p>
-                  </a>
-
-                </div>
-                <div class="ui-block-a ui-block ui-block-bottom">
-                  <a href="./history.html" rel="external" data-ajax="false">
-					<img src="img/heart.svg" alt="" class="homeIcon">
-                    <p style="font-size: 20px">My Health</p>
-                  </a>
-
-                </div>
-                <div class="ui-block-b ui-block ui-block-bottom">
-                  <a href="./settings.html" rel="external" data-ajax="false">
-                    <img src="img/cogs.svg" alt="" class="homeIcon">
-                    <p style="font-size: 20px">Settings</p>
-                  </a>
-
-                </div>
-              </div>
-            
-
-			   <br>
-			   		<img src="http://upload.wikimedia.org/wikipedia/en/4/4b/Sunnybrook_logo.png" style="display: block;  margin-left: auto; margin-right: auto">
-
-         </div>
-         <!-- /content -->
+// -->
+</SCRIPT>
+</h2>
+	<hr class="BB10group">
+		<div style="background-image:url('./img/greenbg.jpg'); color:white; padding: 15px; margin: 0px;">
+		<h2>Your last measurement: </h2> 
+		<script>
+		var lastID = localStorage.getItem( 'indexID' );
+		var uniqueID = lastID;
 
 
-         <!--
-         <div data-role="footer">
-           <div data-role="navbar"  data-position="fixed" data-tap-toggle="false">
-             <ul>
-               <li><a href="./form.html" data-icon="plus" rel="external" data-ajax="false">Tracker</a></li>
-               <li><a href="./history.html" data-icon="grid" rel="external" data-ajax="false">My Health</a></li>
-               <li><a href="./settings.html" data-icon="gear">Settings</a></li>
-             </ul>
-           </div>
-         </div>
-       -->
+		  // for the loop, start at the beginning
+		  ID = uniqueID - 1;
+		
+		if (ID>=0){
+		
+		ID.toString();
+		    // pull the JSON string for the current ID in the loop 
+		    // and extract data into variables
+		    logger = JSON.parse(localStorage.getItem(ID));
+			 bg = logger.bg;
+			 period= logger.period;
+			 time = logger.time;
+				document.write( "<h2 style='text-align: center; font-size: 300%'>"+ bg + " mg/dL </h2>");
+				document.write(  period + " entered on " + time);
 
+		}
+		else{
+		document.write("<h2 style='text-align: center; font-size: 200%'> You have not entered any data yet </h2>");
+            document.write( " Please add a new log!");
+
+		}
+		
+		</script>
+		</div>
+			<hr class="gradient">
+
+		<div class="BB10Container">
+		    <h2>Blood glucose target range</h2>
+			<hr class="gradient">
+
+	<h3>  70 � 130 (mg/dL) before meal </h3>
+		<h3>  Less than 180 mg/dL after meals<h3p>
+
+</div>
+
+    </div><!-- /content -->
+<div data-role="footer" data-position="fixed">
+    <div data-role="actionbar">
+        <div id="o1" data-role="action" class="active" onclick="javascript&colon;location.href='form.html'">
+            <img src="./img/clipboard.svg" alt="" />
+            <p>Add</p>
         </div>
-        <!-- /page -->
+        <div id="o2" data-role="action"  class="active" onclick="javascript&colon;location.href='history.html'">
+            <img src="./img/history.png" alt="" />
+            <p> Logs </p>
+        </div>
+        <div id="o3" data-role="action" rel="external" data-ajax="false" onclick="location.href='camera.html'">
+            <img src="./img/camera.svg" alt="" />
+            <p>Camera</p>
+        </div>
+    </div>
+</div>
+</div><!-- /page -->
 
-        </body>
-        </html>
-        </script>
-    </head>
-    <body>
-    </body>
+</body>
 </html>

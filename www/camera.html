@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Glucose Tracker</title>
+    <link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
+    <script src="js/lib/jquery.js"></script>
+		<script src="cordova-2.4.0.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/bootstrap.js"></script>
+    <script src="BlackBerry-JQM-all.min.js"></script>
+
+
+<script type="text/javascript">
+
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value 
+
+// Wait for PhoneGap to connect with the device
+//
+document.addEventListener("deviceready",onDeviceReady(),false);
+
+// PhoneGap is ready to be used!
+//
+function onDeviceReady() {
+    pictureSource=navigator.camera.PictureSourceType;
+    destinationType=navigator.camera.DestinationType;
+}
+
+  function onSuccess(imageURI) {
+
+      var image = document.getElementById('myImage');
+      image.style.display='block';
+      image.src = imageURI;
+
+      console.log(imageURI);
+
+      lastCameraID = localStorage.getItem('lastCameraID');
+      uniqueCameraID = parseInt(lastCameraID);
+
+
+      camSaveID = "cam"+uniqueCameraID;
+      console.log(camSaveID);
+
+
+      localStorage.setItem(camSaveID, imageURI);
+      console.log(localStorage.getItem(camSaveID));
+
+      uniqueCameraID++;
+
+      localStorage.removeItem( 'lastCameraID' );
+      localStorage.setItem( 'lastCameraID', uniqueCameraID );
+      console.log(localStorage.getItem('lastCameraID'));
+
+
+  }
+// A button will call this function
+//
+function capturePhoto() {
+  // Take picture using device camera and retrieve image as base64-encoded string
+  navigator.camera.getPicture(onSuccess, onFail, {
+    quality: 100,
+    destinationType : navigator.camera.DestinationType.FILE_URI,
+    sourceType: navigator.camera.PictureSourceType.CAMERA,
+    encodingType: navigator.camera.EncodingType.JPEG,
+    saveToPhotoAlbum: true
+  });
+}
+
+
+// Called if something bad happens.
+// 
+function onFail(message) {
+  alert('Failed because: ' + message);
+}
+
+ $(document).ready(function(){
+
+   
+            // if the local storage comes up empty, reset count to zero
+        function initializeCameraID() {
+          var lastID = localStorage.getItem( 'lastCameraID' );
+          if ( lastID == null ) {
+            location.reload(true);
+            localStorage.setItem( 'lastCameraID', 0 );
+            }
+          }
+   
+        initializeCameraID();
+
+        var lastCameraID = parseInt(localStorage.getItem( 'lastCameraID' ));
+
+        console.log("cam"+lastCameraID);
+        console.log(typeof ("cam"+lastCameraID));
+
+
+
+        // before the function, create a uniqueID variable
+        var uniqueCameraID = lastCameraID;
+
+        function loadCameraHistory(uniqueID){
+            ID = uniqueID - 1;
+            $("div#gallery").html("");
+
+            if (ID>=0){
+            while (ID>=0) {
+                 ID.toString();
+                  // pull the JSON string for the current ID in the loop 
+                  // and extract data into variables
+                 var history = localStorage.getItem("cam"+ID);
+                 console.log(history);           
+                 //var img = new Image();
+                 //img.src = history;
+
+                $("div#gallery").append('<img style="display:none; align:middle; width: 600px; height: 800px;" id="'+ID+'" src="" />')
+
+                var image = document.getElementById(ID);
+                image.style.display='block';
+                image.src = history; 
+
+                console.log("testing this image");
+                $("div#gallery").append(history);
+                ID--;
+          }
+      }
+      else {
+         $("div#gallery").append('There are no Photos to display');
+
+      }
+      }
+    loadCameraHistory(uniqueCameraID);
+
+});
+      </script>
+	
+</head>
+<body >
+
+<div data-role="page">
+
+    <div data-role="header" data-theme="b" >
+        <h1>Glucose Tracker</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+					<hr class="gradient">
+
+	Take pictures of the food you are eating!
+				<hr class="gradient">
+
+		<a href="#" data-role="button" data-icon="gear"  data-theme="c" onclick="capturePhoto();">Capture New</a>
+      		<img style="display:none; align:middle; width: 325px; height: 400px;" id="myImage" src="" />
+
+          <div id="gallery"></div>
+
+
+
+    </div><!-- /content -->
+<div data-role="footer" data-position="fixed">
+    <div data-role="actionbar">
+			<div data-role="back"></div>
+
+       <div id="o2" data-role="action" class="active" onclick="javascript&colon;location.href='index.html'">
+            <img src="./img/heart.svg" alt="" />
+            <p>Home</p>
+        </div>
+
+        <div id="o2" data-role="action" class="active" onclick="javascript&colon;location.href='form.html'">
+            <img src="./img/clipboard.svg" alt="" />
+            <p>Add</p>
+        </div>
+   
+
+        <div id="o4" data-role="action" onclick="javascript&colon;location.href='camera.html'">
+            <img src="./img/history.png" alt="" />
+            <p>Logs</p>
+        </div>
+    </div>
+</div>
+
+</div><!-- /page -->
+
+</body>
+</html>
